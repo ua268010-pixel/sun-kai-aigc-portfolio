@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>AIGC PORTFOLIO — SUN KAI</title>
+  <link href="https://db.onlinewebfonts.com/c/65a40d16161c5040b3ae31036979a1db?family=ITC+Blair+W04+Bold" rel="stylesheet">
+  <link href="https://db.onlinewebfonts.com/c/6e47ef470dd19698c911332a9b4d1cf4?family=Neue+Haas+Grotesk+Text+Pro" rel="stylesheet">
+  <style>
+    :root{--nav-h:66px;--kw:calc(100vw / 1280);--kh:calc((100vh - var(--nav-h)) / 712);--k:min(var(--kw),var(--kh));--kt:var(--k);--bg:#E7E7E7}
+    @supports (height:100dvh){:root{--kh:calc((100dvh - var(--nav-h)) / 712)}}
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg)}
+    body{font-family:'Neue Haas Grotesk Text Pro','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    img{-webkit-user-drag:none;user-select:none}
+    :focus-visible{outline:2px solid #1A1A1A;outline-offset:3px}
+    #portfolio-nav{position:fixed;z-index:20;inset:0 0 auto;height:var(--nav-h);background:#E7E7E7;border-bottom:1px solid rgba(26,26,26,.1)}
+    .portfolio-nav__inner{height:100%;max-width:1720px;margin:0 auto;padding:0 clamp(30px,4vw,72px);display:flex;align-items:center;justify-content:space-between;gap:48px}
+    .portfolio-brand{display:flex;align-items:center;gap:13px;color:#1A1A1A;text-decoration:none;flex:0 0 auto}
+    .portfolio-brand__icon{width:40px;height:40px;border:1px solid #444;border-radius:11px;background:#E7E7E7;display:grid;place-items:center;flex:0 0 40px}
+    .portfolio-brand__icon::after{content:'';width:8px;height:8px;border-radius:50%;background:#1A1A1A}
+    .portfolio-brand__copy{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+    .portfolio-brand__title{font-family:'Neue Haas Grotesk Text Pro',Inter,Arial,sans-serif;font-size:21px;font-weight:700;line-height:1.15;letter-spacing:2px;color:#1A1A1A;white-space:nowrap}
+    .portfolio-brand__subtitle{font-size:10.5px;font-weight:500;line-height:1.1;letter-spacing:2.8px;color:#777;white-space:nowrap}
+    .portfolio-links{display:flex;align-items:center;justify-content:flex-end;gap:max(10px,calc(clamp(24px,2.48vw,46.4px) - 21.2px))}
+    .portfolio-links a{color:#555;text-decoration:none;font-size:clamp(18px,1.05vw,20px);font-weight:400;white-space:nowrap;padding:10px 18px;border-radius:11px;transition:color .16s ease,background-color .16s ease;cursor:pointer}
+    .portfolio-links a:hover{color:#1A1A1A;background:#fff}
+    .portfolio-links a[aria-current=page]{color:#1A1A1A;background:#fff}
+    #viewport{position:fixed;left:0;right:0;top:var(--nav-h);bottom:0;overflow:hidden;background:var(--bg)}
+    .page-view{position:absolute;inset:0;background:var(--bg)}
+    .page-view[hidden]{display:none}
+    #home-view{overflow:hidden;background:var(--bg) url('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_125315_3aa52299-a4de-4c7d-b0d4-19527591eae7.png') center/cover no-repeat}
+    #spotlight{position:absolute;inset:0;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_151234_c1af372b-3eeb-47a2-b1b4-5ae98f92e167.png') center/cover no-repeat;pointer-events:none;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%}
+    #viewport{background:var(--bg) url('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_125315_3aa52299-a4de-4c7d-b0d4-19527591eae7.png') center/cover no-repeat}
+    #stage{position:absolute;inset:0;overflow:hidden;background:transparent}
+    .home-copy{position:absolute;z-index:2;left:clamp(30px,4vw,72px);top:50%;width:min(340px,calc(100vw - 60px));transform:translateY(-50%);color:#1A1A1A;text-align:left}
+    .home-copy__eyebrow{margin:0;color:#777;font-size:11px;font-weight:500;line-height:1.2;letter-spacing:2px}
+    .home-copy h1{margin:16px 0 0;color:#1A1A1A;font-size:32px;font-weight:600;line-height:1.35;letter-spacing:-.025em}
+    .home-copy h1 span{display:block;white-space:nowrap}
+    .home-copy__description{margin:18px 0 0;max-width:320px;color:#777;font-size:13px;font-weight:400;line-height:1.7}
+    .home-copy__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+    .home-copy__button{height:36px;padding:0 19px;border:1px solid #AFAFAF;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:transparent;color:#1A1A1A;text-decoration:none;font-size:12.5px;line-height:1;transition:background-color .22s ease,color .22s ease,border-color .22s ease,transform .22s ease}
+    .home-copy__button:hover{border-color:#8E8E8E;background:#F2F2F2;transform:translateY(-1px)}
+    .home-copy__button--primary{border-color:#1A1A1A;background:#1A1A1A;color:#fff}
+    .home-copy__button--primary:hover{border-color:#333;background:#333;color:#fff}
+    .home-copy>[data-home-reveal]{animation:home-copy-enter .5s ease-out both;animation-delay:var(--home-delay,0ms)}
+    .home-copy__eyebrow{--home-delay:80ms}.home-copy h1{--home-delay:160ms}.home-copy__description{--home-delay:240ms}.home-copy__actions{--home-delay:320ms}
+    @keyframes home-copy-enter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @media (max-width:1100px){.home-copy{width:300px}.home-copy h1{font-size:30px}.home-copy__description{max-width:280px}}
+    @media (max-width:720px){.home-copy{left:22px;top:42px;width:min(270px,calc(100vw - 44px));transform:none}.home-copy h1{font-size:28px}.home-copy__description{max-width:260px}}
+    @media (prefers-reduced-motion:reduce){.home-copy>[data-home-reveal]{animation:none}.home-copy__button{transition:none}}
+    .blank-view{display:none;position:absolute;z-index:10;inset:0;background:var(--bg)}
+    #app-view{overflow:hidden}
+    .app-embed{display:block;width:100%;height:100%;border:0;background:var(--bg)}
+    body[data-view=resume] #resume-view,body[data-view=images] #images-view,body[data-view=videos] #videos-view,body[data-view=app] #app-view,body[data-view=contact] #contact-view{display:block}
+    body:not([data-view=home]) #stage,body:not([data-view=home]) #spotlight{display:none}
+    #resume-view{overflow-y:auto;padding:42px 40px 52px;color:#1A1A1A}
+    .resume-layout{width:min(1200px,100%);margin:0 auto}
+    .resume-heading{margin-bottom:34px}
+    .resume-heading p{margin:0;color:#777;font-size:12px;line-height:1;letter-spacing:.18em}
+    .resume-heading h1{margin:12px 0 0;font-size:clamp(36px,3vw,42px);font-weight:600;line-height:1.08;letter-spacing:-.025em}
+    .resume-intro{display:grid;grid-template-columns:minmax(0,43fr) minmax(0,57fr);align-items:center;gap:clamp(64px,6vw,88px)}
+    .resume-portrait{width:100%;aspect-ratio:4/5;margin:0;border-radius:28px;overflow:hidden}
+    .resume-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 32%}
+    .resume-copy{max-width:610px;padding-block:10px}
+    .resume-identity h2{margin:0;font-size:clamp(36px,3vw,42px);font-weight:600;line-height:1.1;letter-spacing:-.025em}
+    .resume-role{margin:12px 0 0;color:#777;font-size:16px;line-height:1.5}
+    .resume-bio{margin-top:42px;max-width:600px;color:#444}
+    .resume-bio p{margin:0;font-size:17px;font-weight:400;line-height:1.8}
+    .resume-bio .resume-bio__lead{font-size:18px;font-weight:500;color:#333}
+    .resume-bio .resume-bio__detail{margin-top:28px}
+    .resume-bio .resume-bio__closing{margin-top:32px;color:#555}
+    .resume-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+    .resume-button{min-height:46px;padding:0 24px;border:1px solid #B9B9B9;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#444;background:transparent;text-decoration:none;font-size:14px;transition:background-color .22s ease,color .22s ease,border-color .22s ease,transform .22s ease}
+    .resume-button:hover{background:#F2F2F2;border-color:#999;transform:translateY(-1px)}
+    .resume-button--primary{border-color:#1A1A1A;background:#1A1A1A;color:#fff}
+    .resume-button--primary:hover{border-color:#333;background:#333;color:#fff}
+    .resume-transition{margin-top:54px;padding-top:30px;border-top:1px solid #CDCDCD;display:flex;align-items:center;justify-content:space-between;gap:32px;color:#777;font-size:13px;line-height:1.3;letter-spacing:.04em}
+    .resume-transition span:last-child{text-align:right}
+    .experience-section{padding:64px 0 60px}
+    .experience-heading__english{margin:0;color:#777;font-size:14px;font-weight:400;line-height:1;letter-spacing:.08em}
+    .experience-heading h2{margin:8px 0 0;color:#1A1A1A;font-size:clamp(38px,3vw,42px);font-weight:600;line-height:1.08;letter-spacing:-.025em}
+    .experience-heading__rule{height:1px;margin-top:20px;background:#CDCDCD}
+    .experience-list{margin-top:24px}
+    .experience-item{padding:0}
+    .experience-item+.experience-item{margin-top:38px;padding-top:38px;border-top:1px solid #CDCDCD}
+    .experience-company{margin:0;color:#1A1A1A;font-size:22px;font-weight:600;line-height:1.35}
+    .experience-meta{display:flex;align-items:baseline;justify-content:space-between;gap:28px;margin-top:8px;color:#777;font-size:16px;font-weight:400;line-height:1.5}
+    .experience-meta time{white-space:nowrap;text-align:right}
+    .experience-duties{margin-top:16px;color:#444}
+    .experience-duties p{margin:0;font-size:16px;font-weight:400;line-height:1.6}
+    .experience-duties p+p{margin-top:10px}
+    .experience-next{margin-top:58px;padding-top:30px;border-top:1px solid #CDCDCD;display:flex;align-items:center;justify-content:space-between;gap:32px;color:#777;font-size:13px;line-height:1.3;letter-spacing:.04em}
+    .experience-next span:last-child{text-align:right}
+    .experience-section.is-reveal-ready [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .5s ease-out,transform .5s ease-out;transition-delay:var(--reveal-delay,0ms)}
+    .experience-section.is-reveal-ready [data-reveal].is-visible{opacity:1;transform:translateY(0)}
+    .skills-section{padding:60px 0}
+    .skills-heading__english,.resume-contact__eyebrow{margin:0;color:#777;font-size:14px;font-weight:400;line-height:1;letter-spacing:.08em}
+    .skills-heading h2{margin:8px 0 0;color:#1A1A1A;font-size:clamp(38px,3vw,42px);font-weight:600;line-height:1.08;letter-spacing:-.025em}
+    .skills-heading__rule{height:1px;margin-top:20px;background:#CDCDCD}
+    .skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:28px}
+    .skill-card{min-width:0;min-height:310px;padding:30px;border:1px solid #D3D3D3;border-radius:22px;background:#EDEDED;display:grid;grid-template-rows:auto 112px auto;align-content:start;transition:transform .22s ease,border-color .22s ease}
+    .skill-card:hover{transform:translateY(-3px);border-color:#BFBFBF}
+    .skill-card__heading{display:flex;align-items:center;gap:14px}
+    .skill-card__icon{width:42px;height:42px;flex:0 0 42px;border-radius:11px;background:#E3E3E3;display:grid;place-items:center;color:#444}
+    .skill-card__icon svg{width:21px;height:21px;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .skill-card h3{margin:0;color:#1A1A1A;font-size:21px;font-weight:600;line-height:1.3}
+    .skill-card__description{margin:22px 0 0;color:#666;font-size:15px;font-weight:400;line-height:1.65}
+    .skill-card__tags{align-self:start;display:flex;flex-wrap:wrap;align-content:flex-start;gap:8px;margin-top:22px}
+    .skill-card__tag{max-width:100%;padding:7px 13px;border-radius:999px;background:#DEDEDE;color:#555;font-size:12.5px;line-height:1.2;white-space:normal;overflow-wrap:anywhere}
+    .resume-contact{padding:30px 0 0;border-top:1px solid #CDCDCD}
+    .resume-contact__body{display:grid;grid-template-columns:minmax(0,52fr) minmax(0,48fr);gap:clamp(48px,6vw,80px);align-items:start;padding:26px 0 28px}
+    .resume-contact__title{margin:0;color:#1A1A1A;font-size:clamp(30px,2.5vw,34px);font-weight:600;line-height:1.25;letter-spacing:-.02em}
+    .resume-contact__copy p{margin:0;color:#777;font-size:16px;line-height:1.6}
+    .resume-contact__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .resume-page-footer{margin-top:0;padding:20px 0 4px}
+    .skills-section.is-reveal-ready [data-skills-reveal],.resume-contact.is-reveal-ready [data-contact-reveal]{opacity:0;transform:translateY(24px);transition:opacity .5s ease-out,transform .5s ease-out;transition-delay:var(--reveal-delay,0ms)}
+    .skills-section.is-reveal-ready [data-skills-reveal].is-visible,.resume-contact.is-reveal-ready [data-contact-reveal].is-visible{opacity:1;transform:translateY(0)}
+    .resume-heading,.resume-portrait,.resume-copy,.resume-transition{animation:resume-enter .48s cubic-bezier(.22,.61,.36,1) both}
+    .resume-portrait{animation-delay:.05s}.resume-copy{animation-delay:.1s}.resume-transition{animation-delay:.15s}
+    @keyframes resume-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    @media (max-width:1050px){.resume-intro{gap:clamp(36px,5vw,64px)}.resume-bio{margin-top:30px}.resume-actions{margin-top:30px}.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.skill-card{grid-template-rows:auto 104px auto}}
+    @media (max-width:760px){#resume-view{padding:34px 22px 42px}.resume-heading{margin-bottom:28px}.resume-intro{grid-template-columns:1fr;gap:34px}.resume-portrait{width:min(100%,520px);justify-self:start}.resume-copy{max-width:none;padding:0}.resume-bio{max-width:none}.resume-transition{margin-top:46px;padding-top:26px}.experience-section{padding:56px 0}.experience-meta{align-items:flex-start;flex-wrap:wrap;gap:4px 24px}.experience-meta time{text-align:left}.experience-item+.experience-item{margin-top:36px;padding-top:36px}.experience-next{margin-top:50px}.skills-section{padding:56px 0}.skills-grid{grid-template-columns:1fr}.skill-card{min-height:0;grid-template-rows:auto auto auto}.skill-card__description{min-height:0}.resume-contact__body{grid-template-columns:1fr;gap:20px;padding-block:24px}.resume-page-footer{padding-top:18px}}
+    @media (max-width:480px){.resume-portrait{border-radius:22px}.resume-bio p{font-size:16px}.resume-bio .resume-bio__lead{font-size:17px}.resume-actions{gap:12px}.resume-button{padding-inline:20px}.resume-transition,.experience-next{align-items:flex-end;font-size:12px}.experience-company{font-size:20px}.experience-meta,.experience-duties p{font-size:15px}}
+    @media (prefers-reduced-motion:reduce){.resume-heading,.resume-portrait,.resume-copy,.resume-transition{animation:none}.resume-button,.skill-card{transition:none}.experience-section.is-reveal-ready [data-reveal],.skills-section.is-reveal-ready [data-skills-reveal],.resume-contact.is-reveal-ready [data-contact-reveal]{opacity:1;transform:none;transition:none}}
+    @media (max-width:900px){.portfolio-links{display:none}.portfolio-nav__inner{padding-inline:22px}}
+    #images-view{overflow-y:auto;padding:42px 40px 48px}
+    .visual-layout{max-width:1040px;margin:0 auto}
+    .visual-heading{margin-bottom:28px;color:#1A1A1A}
+    .visual-heading p{margin:0;font-size:12px;letter-spacing:.22em;color:#666}
+    .visual-heading h1{margin:12px 0 9px;font-size:42px;font-weight:400;letter-spacing:-.025em;line-height:1.1}
+    .visual-heading .visual-subtitle{font-size:16px;letter-spacing:.06em}
+    .category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .category-card{position:relative;aspect-ratio:16/9;background:#D5D5D5;border:1px solid #c7c7c7;border-radius:16px;overflow:hidden;color:#1A1A1A;text-decoration:none;transition:background-color .25s,border-color .25s;cursor:pointer}
+    .category-card:hover{background:#fff;border-color:#aaa}
+    .category-cover{position:absolute;inset:0;pointer-events:none}
+    .category-cover img{width:100%;height:100%;object-fit:cover}
+    .category-card--banner .category-label,.category-card--banner .category-action,.category-card--banner .category-arrow{color:#fff;text-shadow:0 1px 4px #000}
+    .category-card--banner .category-label span{color:#fff}
+    .category-card--banner .category-cover::after{content:'';position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+    .category-label{position:absolute;left:28px;bottom:28px;display:flex;flex-direction:column;gap:10px}
+    .category-label strong{font-size:22px;font-weight:400;letter-spacing:.035em}
+    .category-label span{font-size:16px;color:#555}
+    .category-action{position:absolute;right:28px;bottom:28px;display:flex;flex-direction:column;align-items:flex-end;gap:7px;font-size:11px;letter-spacing:.08em;color:#666}
+    .category-arrow{position:absolute;right:28px;top:24px;font-size:26px;transition:transform .25s}
+    .category-card:hover .category-arrow{transform:translate(3px,-3px)}
+    #videos-view{overflow-y:auto;padding:42px 40px 64px}
+    .video-layout{width:min(1232px,100%);margin:0 auto;color:#1A1A1A}
+    .video-grid{display:grid;gap:32px}
+    .video-grid--featured{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .video-grid--secondary{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:44px}
+    .video-category{min-width:0}
+    .video-category__media{display:block;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid #c7c7c7;border-radius:16px;background:#3B3B3B;cursor:pointer}
+    .video-category__cover{position:absolute;inset:0;background:#3B3B3B;transform:scale(1);transition:transform .3s cubic-bezier(.22,.61,.36,1),filter .3s ease}
+    .video-category__cover img,.video-category__cover video{display:block;width:100%;height:100%;object-fit:cover}
+    .video-category__play{position:absolute;left:50%;top:50%;width:58px;height:58px;border:1px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(26,26,26,.28);display:grid;place-items:center;opacity:0;transform:translate(-50%,-50%) scale(.92);transition:opacity .3s ease,transform .3s cubic-bezier(.22,.61,.36,1);pointer-events:none}
+    .video-category__play::after{content:'';display:block;margin-left:4px;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:11px solid #fff}
+    .video-category__media:hover .video-category__cover,.video-category__media:focus-visible .video-category__cover{transform:scale(1.03);filter:brightness(.72)}
+    .video-category__media:hover .video-category__play,.video-category__media:focus-visible .video-category__play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    .video-category__caption{position:relative;padding:16px 48px 0 0;min-height:64px}
+    .video-category__caption h2{margin:0;font-size:21px;font-weight:400;line-height:1.25;letter-spacing:.015em}
+    .video-category__caption p{margin:7px 0 0;font-size:12px;line-height:1.3;letter-spacing:.16em;color:#666}
+    .video-category__number{position:absolute;right:0;top:16px;font-size:13px;line-height:1;letter-spacing:.1em;color:#666}
+    .video-grid--secondary .video-category__caption h2{font-size:18px}
+    @media (prefers-reduced-motion:reduce){.video-category__cover,.video-category__play{transition:none}}
+    .category-detail{display:none;position:absolute;z-index:10;inset:0;background:var(--bg);overflow-y:auto;padding:36px 40px}
+    .category-detail:target{display:block}
+    body[data-detail=true] #portfolio-nav{display:none}
+    body[data-detail=true] #viewport{top:0}
+    .category-detail>.category-close{position:absolute;right:48px;top:32px}
+    .category-detail__inner{max-width:1040px;margin:auto}
+    .category-back{color:#666;text-decoration:none;font-size:14px}
+    .category-back:hover{color:#1A1A1A}
+    .works-container{min-height:calc(100vh - 170px)}
+    #poster{padding:32px 48px 28px}
+    .poster-shell{max-width:1784px;margin:auto;color:#1A1A1A}
+    .poster-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+    .poster-header p{margin:0 0 8px;font-size:14px;color:#666;letter-spacing:.08em}
+    .poster-header h1{margin:0;font-size:28px;font-weight:400}
+    .poster-close,.poster-arrow{width:44px;height:44px;border:1px solid #b7b7b7;border-radius:50%;background:transparent;color:#333;display:grid;place-items:center;text-decoration:none;font-size:24px;cursor:pointer;transition:background .2s}
+    .poster-close:hover,.poster-arrow:hover{background:white}
+    .poster-arrow:disabled{opacity:.3;cursor:default}
+    .poster-display{position:relative;height:clamp(380px,calc(100vh - 300px),740px);border:1px solid #ccc;border-radius:24px;background:#ddd;display:grid;place-items:center;padding:36px 110px;overflow:hidden}
+    .poster-image{width:auto;height:100%;max-width:100%;min-height:0;aspect-ratio:3/4;object-fit:contain;transition:opacity .2s}
+    .poster-image[hidden]{display:none}
+    .poster-number{position:absolute;right:40px;top:80px;font-size:110px;line-height:1;color:rgba(26,26,26,.08);pointer-events:none}
+    .poster-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;padding:0;display:flex;align-items:center;justify-content:center;line-height:1;appearance:none}.poster-prev{left:24px}.poster-next{right:24px}
+    .poster-arrow svg{display:block;width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .poster-thumbnails{display:flex;gap:13px;overflow-x:auto;margin:20px auto 0;max-width:1128px;padding:0 0 8px;scroll-behavior:smooth;touch-action:pan-x;overscroll-behavior-x:contain}
+    .poster-thumbnail{aspect-ratio:16/9;flex:0 0 calc((100% - 78px)/7);min-width:0;border:0;border-radius:8px;background:#d5d5d5;padding:0;overflow:hidden;cursor:pointer;position:relative;scroll-snap-align:start;transition:filter .2s}
+    .poster-thumbnail[aria-current=true]{outline:2px solid #333;outline-offset:-2px}
+    .poster-thumbnail[aria-current=true]::after{content:'';position:absolute;inset:0;border:2px solid #333;border-radius:8px;pointer-events:none}
+    .poster-thumbnail:hover{filter:brightness(1.08)}
+    .poster-thumbnail img{width:100%;height:100%;object-fit:cover;object-position:var(--thumbnail-position,center);display:block;user-select:none;-webkit-user-drag:none}
+    .poster-thumbnails.is-dragging{cursor:grabbing;scroll-behavior:auto}.poster-thumbnails.is-dragging .poster-thumbnail{cursor:grabbing}
+    #banner{padding:32px 48px 28px}
+    .banner-shell{max-width:1784px;margin:auto;color:#1A1A1A}
+    .banner-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+    .banner-header p{margin:0 0 8px;font-size:14px;letter-spacing:.12em;color:#666}
+    .banner-header h1{margin:0;font-size:28px;font-weight:400}
+    .banner-display{position:relative;height:clamp(360px,calc(100vh - 280px),760px);border:1px solid #ccc;border-radius:24px;background:#ddd;display:flex;align-items:center;justify-content:center;padding:36px 88px}
+    .banner-image-area{width:100%;height:100%;display:flex;align-items:center;justify-content:center;min-height:0}
+    .banner-image{display:block;width:100%;height:100%;object-fit:contain;transition:opacity .2s}
+    .banner-image[hidden]{display:none}
+    .banner-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;padding:0;border:1px solid #b7b7b7;border-radius:50%;background:transparent;color:#333;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;appearance:none}
+    .banner-arrow:hover{background:#fff}.banner-arrow:disabled{opacity:.3;cursor:default}.banner-prev{left:24px}.banner-next{right:24px}
+    .banner-arrow svg{width:22px;height:22px;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .banner-thumbnails{display:flex;gap:18px;overflow-x:auto;padding:3px 3px 8px;margin-top:20px;min-height:94px;scroll-behavior:smooth;touch-action:pan-x;overscroll-behavior-x:contain}
+    .banner-thumbnail{flex:0 0 calc((100% - 90px)/6);aspect-ratio:16/9;min-width:140px;border:1px solid #bbb;border-radius:9px;background:#d5d5d5;padding:3px;cursor:pointer;transition:background .2s,border-color .2s}
+    .banner-thumbnail:hover{background:#fff}.banner-thumbnail[aria-current=true]{border:2px solid #333}.banner-thumbnail img{display:block;width:100%;height:100%;object-fit:contain;border-radius:5px}
+    #typography{padding:32px 48px 28px}
+    #typography .type-display{height:clamp(360px,calc(100vh - 300px),740px)}
+    #typography .type-image{width:auto;height:100%;max-width:100%;max-height:100%;aspect-ratio:4/3;object-fit:contain;object-position:center}
+    .type-thumbnails{display:flex;gap:14px;max-width:1204px;margin:20px auto 0;overflow-x:auto;padding-bottom:8px;scroll-behavior:smooth;touch-action:pan-x;overscroll-behavior-x:contain}
+    .type-thumbnail{flex:0 0 calc((100% - 84px)/7);min-width:0;aspect-ratio:4/3;border:0;padding:0;border-radius:8px;overflow:hidden;background:#d5d5d5;position:relative;cursor:pointer;scroll-snap-align:start;transition:filter .2s}
+    .type-thumbnail img{width:100%;height:100%;display:block;object-fit:cover;object-position:var(--thumbnail-position,center);user-select:none;-webkit-user-drag:none}
+    .type-thumbnail[aria-current=true]::after{content:'';position:absolute;inset:0;border:2px solid #333;border-radius:8px;pointer-events:none}
+    .type-thumbnail:hover{filter:brightness(1.08)}.type-thumbnails.is-dragging{cursor:grabbing;scroll-behavior:auto}
+    #ip-vi{padding:32px 48px 28px}
+    #ip-vi .ip-image{width:min(900px,100%);height:auto;max-width:100%;max-height:100%;aspect-ratio:auto;object-fit:contain;object-position:center}
+    .ip-thumbnails{display:flex;gap:14px;max-width:1204px;margin:20px auto 0;overflow-x:auto;padding-bottom:8px;scroll-behavior:smooth;touch-action:pan-x;overscroll-behavior-x:contain}
+    .ip-thumbnail{flex:0 0 calc((100% - 42px)/4);min-width:210px;aspect-ratio:1627/941;border:0;padding:0;border-radius:8px;overflow:hidden;background:#d5d5d5;position:relative;cursor:pointer;scroll-snap-align:start;transition:filter .2s}
+    .ip-thumbnail img{width:100%;height:100%;display:block;object-fit:cover;object-position:var(--thumbnail-position,center);user-select:none;-webkit-user-drag:none}
+    .ip-thumbnail[aria-current=true]::after{content:'';position:absolute;inset:0;border:2px solid #333;border-radius:8px;pointer-events:none}
+    #drama-detail{padding:32px 48px 64px}
+    .drama-shell{width:min(1180px,100%);margin:0 auto;color:#1A1A1A}
+    .drama-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px}
+    .drama-header p{margin:0 0 8px;font-size:14px;letter-spacing:.1em;color:#777}
+    .drama-header h1{margin:0;font-size:28px;font-weight:400}
+    .drama-player-row{display:grid;grid-template-columns:48px minmax(0,1050px) 48px;align-items:center;justify-content:center;gap:18px}
+    .drama-switch{position:relative;z-index:4;width:44px;height:44px;border:1px solid #b7b7b7;border-radius:50%;background:transparent;color:#333;display:grid;place-items:center;padding:0;cursor:pointer;transform:translate(var(--drama-switch-x,0px),var(--drama-switch-y,0px));transition:background .2s;will-change:transform;appearance:none}
+    .drama-switch:hover:not(:disabled){background:#fff}.drama-switch:disabled{opacity:.3;cursor:default}
+    .drama-switch svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .drama-player{position:relative;width:100%;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#000;display:grid;place-items:center}
+    .drama-player video{display:block;width:auto;height:auto;max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain!important;object-position:center center!important;background:#000;position:static;inset:auto;transform:none!important}
+    .drama-player__empty{position:absolute;inset:0;display:grid;place-items:center;color:#888;font-size:14px;letter-spacing:.08em;pointer-events:none}
+    .drama-player__empty[hidden]{display:none}
+    .drama-info{width:min(1050px,calc(100% - 132px));margin:20px auto 0;display:flex;justify-content:space-between;gap:48px;align-items:flex-start}
+    .drama-info__copy{max-width:760px}.drama-info__copy h2{margin:0;font-size:26px;font-weight:400}.drama-info__copy p{margin:10px 0 0;color:#777;font-size:14px;line-height:1.7}.drama-info__copy .drama-kicker{font-size:12px;letter-spacing:.16em}
+    .drama-count{font-size:15px;letter-spacing:.12em;white-space:nowrap;color:#777}
+    .drama-assets{width:min(1120px,100%);margin:48px auto 0;padding:28px;border:1px solid #D6D6D6;border-radius:16px;background:#F4F4F4}
+    .drama-assets__heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.drama-assets__heading h2{margin:0;font-size:22px;font-weight:400}.drama-assets__heading span{font-size:11px;letter-spacing:.16em;color:#777}
+    .drama-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:24px}
+    .drama-tab{border:0;border-radius:9px;background:#E5E5E5;color:#555;padding:11px 16px;font:inherit;font-size:14px;cursor:pointer;transition:background .2s,color .2s}.drama-tab[aria-selected=true]{background:#1A1A1A;color:#fff}
+    .drama-script{max-height:360px;overflow:auto;border:1px solid #E0E0E0;border-radius:12px;background:#fff;padding:26px;color:#555;line-height:1.8;white-space:pre-wrap}.drama-script h3{margin:0 0 14px;color:#1A1A1A;font-size:18px;font-weight:400}.drama-script p{margin:0}
+    .drama-script-frame{display:block;width:100%;height:360px;border:1px solid #E0E0E0;border-radius:12px;background:#fff}
+    .drama-asset-strip{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;padding:3px 3px 8px;scroll-behavior:smooth;touch-action:pan-x;overscroll-behavior-x:contain}
+    .drama-asset-card{flex:0 0 calc((100% - 42px)/4);min-width:0;border:1px solid #D6D6D6;border-radius:11px;background:#ddd;padding:0;overflow:hidden;cursor:pointer;appearance:none}.drama-asset-card img{display:block;width:100%;height:100%;object-fit:cover}.drama-asset-card--portrait{aspect-ratio:3/4}.drama-asset-card--landscape{aspect-ratio:4/3}
+    .drama-assets__empty{min-height:180px;border:1px solid #E0E0E0;border-radius:12px;background:#fff;display:grid;place-items:center;color:#888;font-size:14px}
+    .drama-scrollbar{display:none!important}
+    .asset-lightbox{display:none;position:fixed;z-index:50;inset:0;background:rgba(15,15,15,.88);align-items:center;justify-content:center;padding:56px 110px}.asset-lightbox.is-open{display:flex}.asset-lightbox img{max-width:100%;max-height:100%;object-fit:contain}.asset-lightbox__close,.asset-lightbox__arrow{position:absolute;width:44px;height:44px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(20,20,20,.3);color:#fff;display:grid;place-items:center;cursor:pointer}.asset-lightbox__close{right:36px;top:28px;font-size:25px}.asset-lightbox__arrow{top:50%;transform:translateY(-50%)}.asset-lightbox__prev{left:34px}.asset-lightbox__next{right:34px}.asset-lightbox__arrow:disabled{opacity:.3;cursor:default}
+    #contact-view{overflow-y:auto;padding:42px 40px 56px;color:#1A1A1A}
+    .contact-layout{width:min(1200px,100%);margin:0 auto}
+    .contact-heading{display:flex;align-items:flex-end;align-items:last baseline;justify-content:space-between;gap:48px;padding-top:66px;padding-bottom:16px;border-bottom:1px solid #D0D0D0}
+    .contact-heading__left p,.contact-heading__right p{margin:0;color:#777}.contact-heading__left p{font-size:12px;letter-spacing:.18em}.contact-heading__left h1{margin:12px 0 0;font-size:42px;font-weight:400;letter-spacing:-.025em}.contact-heading__right{text-align:right}.contact-heading__right strong{display:block;margin-bottom:8px;font-size:14px;font-weight:400;letter-spacing:.14em}.contact-heading__right p{font-size:14px}
+    .contact-card{margin-top:36px;padding:28px 32px 24px;border:1px solid #D3D3D3;border-radius:18px;background:#EDEDED}
+    .contact-card__eyebrow{margin:0;color:#777;font-size:11px;letter-spacing:.18em}.contact-card__title{margin:10px 0 22px;font-size:28px;font-weight:500;line-height:1.25}.contact-card__rule{height:1px;background:#D8D8D8}
+    .contact-list{width:100%;margin:8px 0 0}
+    .contact-row{width:100%;height:60px;display:grid;grid-template-columns:48px minmax(0,1fr) 24px;align-items:center;gap:16px;border:0;border-bottom:1px solid #D8D8D8;background:transparent;padding:0;color:#1A1A1A;text-decoration:none;text-align:left;font:inherit;transition:background-color .22s ease}
+    .contact-row:last-child{border-bottom:0}.contact-row__number{color:#AAA;font-size:12px;letter-spacing:.12em}.contact-row__copy{min-width:0;display:flex;flex-direction:column;gap:5px}.contact-row__copy strong{font-size:15px;font-weight:500}.contact-row__copy span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#777;font-size:13px}.contact-row__icon{width:20px;height:20px;color:#777;transition:color .22s ease}.contact-row__icon svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.contact-row:hover{background:#DCDCDC}.contact-row:hover .contact-row__icon{color:#1A1A1A}.contact-row.is-action{cursor:pointer}.contact-row.is-action:hover .contact-row__copy span{color:#1A1A1A}.contact-row.is-disabled{cursor:default}
+    .contact-philosophy{width:calc(100% + 80px);margin:56px 0 0 -40px;padding:30px clamp(32px,6vw,120px) 34px;border-top:1px solid #C5C5C5;background:#E3E3E3}
+    .contact-philosophy__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+    .contact-philosophy__item{min-width:0;min-height:86px;display:flex;align-items:flex-start;gap:16px}
+    .contact-philosophy__item::before{content:'';display:block;flex:0 0 1px;width:1px;height:48px;background:#BDBDBD}
+    .contact-philosophy__copy{min-width:0}.contact-philosophy__copy h3{margin:0;color:#1A1A1A;font-size:17px;font-weight:500;line-height:1.4}.contact-philosophy__copy p{margin:8px 0 0;color:#777;font-size:13px;font-weight:400;line-height:1.5}
+    .contact-footer{display:flex;justify-content:space-between;align-items:center;margin-top:36px;padding-top:20px;border-top:1px solid #D8D8D8;color:#777;font-size:12px;letter-spacing:.08em}.contact-footer button{border:0;background:transparent;padding:6px 0;color:inherit;font:inherit;letter-spacing:inherit;cursor:pointer}.contact-footer button:hover{color:#1A1A1A}
+    .contact-toast{position:fixed;z-index:30;left:50%;bottom:28px;transform:translateX(-50%);padding:9px 15px;border-radius:8px;background:#1A1A1A;color:#fff;font-size:12px;opacity:0;pointer-events:none;transition:opacity .18s}.contact-toast.is-visible{opacity:1}
+    .wechat-modal{position:fixed;z-index:60;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .23s ease-out,visibility .23s}
+    .wechat-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}
+    .wechat-modal__panel{width:min(420px,100%);max-height:90vh;max-height:90dvh;overflow-y:auto;overscroll-behavior:contain;padding:20px 22px 22px;border-radius:16px;background:#EDEDED;color:#1A1A1A;transform:scale(.96);transition:transform .23s ease-out}
+    .wechat-modal.is-open .wechat-modal__panel{transform:scale(1)}
+    .wechat-modal__header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}.wechat-modal__header h2{margin:0;font-size:18px;font-weight:500}.wechat-modal__close{width:32px;height:32px;flex:0 0 32px;border:0;background:transparent;color:#555;font:inherit;font-size:24px;line-height:1;cursor:pointer}.wechat-modal__close:hover{color:#1A1A1A}
+    .wechat-modal__image{display:block;width:auto;height:auto;max-width:100%;max-height:calc(90vh - 110px);max-height:calc(90dvh - 110px);margin:0 auto;object-fit:contain;background:#fff}
+    @media (prefers-reduced-motion:reduce){.wechat-modal,.wechat-modal__panel{transition:none}}
+    @media (max-width:700px){.category-detail{padding:22px 18px}.ip-thumbnail{min-width:180px}}
+  </style>
+</head>
+<body>
+<header id="portfolio-nav">
+  <div class="portfolio-nav__inner">
+    <a class="portfolio-brand" href="#home" aria-label="AIGC Portfolio 首页">
+      <span class="portfolio-brand__icon" aria-hidden="true"></span>
+      <span class="portfolio-brand__copy"><span class="portfolio-brand__title">AIGC PORTFOLIO</span><span class="portfolio-brand__subtitle">SUN KAI</span></span>
+    </a>
+    <nav class="portfolio-links" aria-label="作品集导航">
+      <a href="#home" data-view="home" aria-current="page">首页</a><a href="#resume" data-view="resume">个人简历</a><a href="#portfolio" data-view="images">海报作品</a><a href="#videos" data-view="videos">视频作品</a><a href="#jixia-app" data-view="app">记下app</a><a href="#contact" data-view="contact">联系我</a>
+    </nav>
+  </div>
+</header>
+<main id="viewport">
+  <div id="spotlight"></div>
+  <div id="stage">
+    <section class="home-copy" aria-labelledby="home-copy-title">
+      <p class="home-copy__eyebrow" data-home-reveal>AIGC VISUAL CREATION</p>
+      <h1 id="home-copy-title" data-home-reveal><span>让创意，</span><span>拥有更多可能。</span></h1>
+      <p class="home-copy__description" data-home-reveal>专注 AIGC 视觉设计与 AI 视频创作，探索技术与美学融合的全新表达。</p>
+      <div class="home-copy__actions" data-home-reveal><a class="home-copy__button home-copy__button--primary" href="#portfolio">探索作品 ↗</a><a class="home-copy__button" href="#resume">了解更多 ↗</a></div>
+    </section>
+  </div>
+  <section id="resume-view" class="blank-view" aria-label="个人简历">
+    <div class="resume-layout">
+      <header class="resume-heading"><p>RESUME</p><h1>个人简历</h1></header>
+      <div class="resume-intro">
+        <figure class="resume-portrait"><img src="assets/resume/sun-kai-portrait.webp" alt="孙凯个人肖像"></figure>
+        <div class="resume-copy">
+          <header class="resume-identity"><h2>孙凯</h2><p class="resume-role">AIGC视觉设计师 / AI视频创作者</p></header>
+          <div class="resume-bio">
+            <p class="resume-bio__lead">专注于AIGC视觉设计与AI视频创作。</p>
+            <p class="resume-bio__detail">具备品牌广告、视觉创意与数字内容制作经验，覆盖创意策划、脚本拆解、分镜设计，到角色设定、场景搭建、视觉资产生成及AI视频制作的完整流程。熟悉Seedance、MiniMax、ComfyUI，擅长融合影视镜头语言与生成式AI，强化作品的叙事与表现力。</p>
+            <p class="resume-bio__closing">我始终保持对视觉创作的热情，希望在持续的学习与实践中，探索出每一个想法更好的表达方式。</p>
+          </div>
+          <div class="resume-actions" aria-label="个人简历快捷操作"><a class="resume-button resume-button--primary" href="#portfolio">查看作品 ↗</a><a class="resume-button" href="#contact">联系我 ↗</a></div>
+        </div>
+      </div>
+      <footer class="resume-transition"><span>工作经历 / EXPERIENCE</span><span>SCROLL TO EXPLORE ↓</span></footer>
+      <section class="experience-section" aria-labelledby="experience-title">
+        <header class="experience-heading" data-reveal>
+          <p class="experience-heading__english">EXPERIENCE</p>
+          <h2 id="experience-title">工作经历</h2>
+          <div class="experience-heading__rule" aria-hidden="true"></div>
+        </header>
+        <div class="experience-list">
+          <article class="experience-item">
+            <h3 class="experience-company" data-reveal>北京金泉飞扬影视传媒有限公司</h3>
+            <div class="experience-meta" data-reveal><span>AIGC创意制作</span><time datetime="2024-07/2026-10">2024.07 — 2026.10</time></div>
+            <div class="experience-duties">
+              <p data-reveal>参与品牌广告、产品宣传及短视频项目的创意策划、视觉风格制定与分镜设计。</p>
+              <p data-reveal>运用Seedance、MiniMax、ComfyUI等AI工具，完成人物形象、产品场景、视觉素材及AI视频内容生成。</p>
+              <p data-reveal>负责角色、场景、道具等视觉资产的设计与搭建，优化角色一致性、画面质量及镜头衔接效果。</p>
+              <p data-reveal>参与AI视频从前期创意、素材生成到后期画面优化的制作流程，提升视觉内容的完整度与表现力。</p>
+            </div>
+          </article>
+          <article class="experience-item">
+            <h3 class="experience-company" data-reveal>北京金泉飞扬影视传媒有限公司</h3>
+            <div class="experience-meta" data-reveal><span>广告制作</span><time datetime="2023-09/2024-06">2023.09 — 2024.06</time></div>
+            <div class="experience-duties">
+              <p data-reveal>参与品牌广告及社交媒体视频内容制作，根据项目需求开展视觉创意与画面设计。</p>
+              <p data-reveal>负责广告项目中的人物、产品、场景及道具素材整理、设计与视觉处理。</p>
+              <p data-reveal>配合完成广告视频的素材制作、画面调整、剪辑及调色优化。</p>
+              <p data-reveal>结合品牌定位与传播需求，优化广告画面的视觉表现与整体风格统一性。</p>
+            </div>
+          </article>
+        </div>
+        <footer class="experience-next" data-reveal><span>专业技能 / SKILLS</span><span>SCROLL TO EXPLORE ↓</span></footer>
+      </section>
+      <section class="skills-section" aria-labelledby="skills-title">
+        <header class="skills-heading" data-skills-reveal>
+          <p class="skills-heading__english">SKILLS</p>
+          <h2 id="skills-title">专业技能</h2>
+          <div class="skills-heading__rule" aria-hidden="true"></div>
+        </header>
+        <div class="skills-grid">
+          <article class="skill-card" data-skills-reveal>
+            <div class="skill-card__heading"><span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m9 9 6 3-6 3V9Z"/></svg></span><h3>AI视频开发</h3></div>
+            <p class="skill-card__description">涵盖AI短片、商业广告与视频内容创作，覆盖创意策划、脚本分镜、角色场景搭建到动态画面生成，形成完整的AI视频开发流程。</p>
+            <div class="skill-card__tags" aria-label="AI视频开发技能标签"><span class="skill-card__tag">AI短片</span><span class="skill-card__tag">商业广告</span><span class="skill-card__tag">游戏宣传</span><span class="skill-card__tag">故事板设定</span><span class="skill-card__tag">角色、场景搭建</span><span class="skill-card__tag">视频生成</span><span class="skill-card__tag">后期优化</span></div>
+          </article>
+          <article class="skill-card" data-skills-reveal>
+            <div class="skill-card__heading"><span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14.5 4.5 5 5L9 20H4v-5L14.5 4.5Z"/><path d="m12 7 5 5"/></svg></span><h3>视觉设计</h3></div>
+            <p class="skill-card__description">专注品牌视觉、海报设计、IP形象及视觉资产制作，注重创意表达、画面风格统一与商业视觉呈现效果。</p>
+            <div class="skill-card__tags" aria-label="视觉设计技能标签"><span class="skill-card__tag">海报设计</span><span class="skill-card__tag">IP设计</span><span class="skill-card__tag">品牌视觉</span><span class="skill-card__tag">插画设计</span><span class="skill-card__tag">UI设计</span><span class="skill-card__tag">作品集网站搭建</span></div>
+          </article>
+          <article class="skill-card" data-skills-reveal>
+            <div class="skill-card__heading"><span class="skill-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 1.4 4.1L17.5 8.5l-4.1 1.4L12 14l-1.4-4.1-4.1-1.4 4.1-1.4L12 3Z"/><path d="m18 14 .8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8L18 14Z"/></svg></span><h3>多模态AI创作</h3></div>
+            <p class="skill-card__description">熟悉多种AI创作工具与图像、视频生成流程，结合工作流搭建与后期处理，提升整体内容创作效率与表现力。</p>
+            <div class="skill-card__tags" aria-label="多模态AI创作技能标签"><span class="skill-card__tag">Midjourney</span><span class="skill-card__tag">Stable Diffusion</span><span class="skill-card__tag">ComfyUI</span><span class="skill-card__tag">Flux</span><span class="skill-card__tag">Seedance</span><span class="skill-card__tag">Photoshop</span><span class="skill-card__tag">剪映</span></div>
+          </article>
+        </div>
+      </section>
+      <section class="resume-contact" aria-labelledby="resume-contact-title">
+        <p class="resume-contact__eyebrow" data-contact-reveal>GET IN TOUCH</p>
+        <div class="resume-contact__body">
+          <h2 class="resume-contact__title" id="resume-contact-title" data-contact-reveal>期待与你，创造更多可能。</h2>
+          <div class="resume-contact__copy">
+            <p data-contact-reveal>欢迎交流视觉创意、AI视频制作与更多有趣的合作想法。</p>
+            <div class="resume-contact__actions"><a class="resume-button resume-button--primary" href="#contact" data-contact-reveal>联系我 ↗</a><a class="resume-button" href="#portfolio" data-contact-reveal>查看作品 ↗</a></div>
+          </div>
+        </div>
+        <footer class="contact-footer resume-page-footer" data-contact-reveal><span>© 2026 SUN KAI · AIGC PORTFOLIO</span><button type="button" data-resume-back-to-top>BACK TO TOP ↑</button></footer>
+      </section>
+    </div>
+  </section>
+  <section id="images-view" class="blank-view" aria-label="图片作品">
+    <div class="visual-layout">
+      <header class="visual-heading"><p>SELECTED VISUAL WORKS</p><h1>AI VISUAL DESIGN</h1><p class="visual-subtitle">AI 视觉设计</p></header>
+      <div class="category-grid">
+        <a class="category-card category-card--banner" href="#poster"><div class="category-cover"><img src="assets/posters/poster-06.webp" alt="回声之室：记忆的留白 海报设计封面"></div><span class="category-arrow" aria-hidden="true">↗</span><div class="category-label"><strong>POSTER DESIGN</strong><span>01 海报设计</span></div><div class="category-action"><span>VIEW WORKS</span><span>查看作品</span></div></a>
+        <a class="category-card category-card--banner" href="#banner"><div class="category-cover"><img src="assets/banners/banner-07.webp" alt="通往日蚀之路 Banner作品封面"></div><span class="category-arrow" aria-hidden="true">↗</span><div class="category-label"><strong>BANNER DESIGN</strong><span>02 Banner设计</span></div><div class="category-action"><span>VIEW WORKS</span><span>查看作品</span></div></a>
+        <a class="category-card category-card--banner" href="#typography"><div class="category-cover"><img src="assets/typography/type-01.webp" alt="字体设计作品封面"></div><span class="category-arrow" aria-hidden="true">↗</span><div class="category-label"><strong>TYPOGRAPHY DESIGN</strong><span>03 字体设计</span></div><div class="category-action"><span>VIEW WORKS</span><span>查看作品</span></div></a>
+        <a class="category-card category-card--banner" href="#ip-vi"><div class="category-cover"><img src="assets/ip-vi/ip-01.webp" alt="NILO IP设计与VI延展封面"></div><span class="category-arrow" aria-hidden="true">↗</span><div class="category-label"><strong>IP &amp; VI DESIGN</strong><span>04 IP设计 &amp; VI延展</span></div><div class="category-action"><span>VIEW WORKS</span><span>查看作品</span></div></a>
+      </div>
+    </div>
+  </section>
+  <section id="poster" class="category-detail" aria-label="海报设计">
+    <div class="poster-shell">
+      <header class="poster-header"><div><p>海报作品 / <span data-poster-number>01</span></p><h1>海报视觉合集</h1></div><a class="poster-close" href="#portfolio" aria-label="关闭并返回作品总览">×</a></header>
+      <div class="poster-display"><button class="poster-arrow poster-prev" aria-label="上一张作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><img class="poster-image" alt="" hidden><span class="poster-number" data-poster-number>01</span><button class="poster-arrow poster-next" aria-label="下一张作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="poster-thumbnails" aria-label="海报作品缩略图"></div>
+    </div>
+  </section>
+  <section id="banner" class="category-detail" aria-label="Banner设计">
+    <div class="banner-shell">
+      <header class="banner-header"><div><p>BANNER / <span data-banner-number>01</span></p><h1>横版视觉合集</h1></div><a class="poster-close" href="#portfolio" aria-label="关闭并返回作品总览">×</a></header>
+      <div class="banner-display"><button class="banner-arrow banner-prev" aria-label="上一张Banner作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><div class="banner-image-area"><img class="banner-image" alt="" hidden></div><button class="banner-arrow banner-next" aria-label="下一张Banner作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="banner-thumbnails" aria-label="Banner作品缩略图"></div>
+    </div>
+  </section>
+  <section id="typography" class="category-detail" aria-label="字体设计">
+    <div class="poster-shell">
+      <header class="poster-header"><div><p>TYPOGRAPHY / <span data-type-number>01</span></p><h1>字体设计合集</h1></div><a class="poster-close" href="#portfolio" aria-label="关闭并返回作品总览">×</a></header>
+      <div class="poster-display type-display"><button class="poster-arrow poster-prev type-prev" aria-label="上一张字体作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><img class="poster-image type-image" alt="" hidden><span class="poster-number" data-type-number>01</span><button class="poster-arrow poster-next type-next" aria-label="下一张字体作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="type-thumbnails" aria-label="字体作品胶片画廊"></div>
+    </div>
+  </section>
+  <section id="ip-vi" class="category-detail" aria-label="IP设计与VI延展">
+    <div class="poster-shell">
+      <header class="poster-header"><div><p>IP &amp; VI / <span data-ip-number>01</span></p><h1>IP设计 &amp; VI延展合集</h1></div><a class="poster-close" href="#portfolio" aria-label="关闭并返回作品总览">×</a></header>
+      <div class="poster-display"><button class="poster-arrow poster-prev ip-prev" aria-label="上一张IP与VI作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><img class="poster-image ip-image" alt="" hidden><span class="poster-number" data-ip-number>01</span><button class="poster-arrow poster-next ip-next" aria-label="下一张IP与VI作品" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="ip-thumbnails" aria-label="IP与VI作品胶片画廊"></div>
+    </div>
+  </section>
+  <section id="videos-view" class="blank-view" aria-label="视频作品">
+    <div class="video-layout">
+      <header class="visual-heading"><p>SELECTED VIDEO WORKS</p><h1>AI VIDEO DESIGN</h1><p class="visual-subtitle">AI 视频设计</p></header>
+      <div class="video-grid video-grid--featured">
+        <article class="video-category" data-category="drama" data-detail-path="/videos/drama">
+          <a class="video-category__media" href="#videos/drama" aria-label="进入漫剧设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/drama/night-shadow/night-shadow.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <div class="video-category__caption"><h2>漫剧设计</h2><p>AI DRAMA SERIES</p><span class="video-category__number">01</span></div>
+        </article>
+        <article class="video-category" data-category="short-film" data-detail-path="/videos/short-film">
+          <a class="video-category__media" href="#videos/short-film" aria-label="进入短片设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/short-film/blood-paper-lantern/blood-paper-lantern.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <div class="video-category__caption"><h2>短片设计</h2><p>SHORT FILM</p><span class="video-category__number">02</span></div>
+        </article>
+      </div>
+      <div class="video-grid video-grid--secondary">
+        <article class="video-category" data-category="tvc" data-detail-path="/videos/tvc">
+          <a class="video-category__media" href="#videos/tvc" aria-label="进入TVC设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/tvc/peach-essence/peach-essence.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <div class="video-category__caption"><h2>TVC设计</h2><p>TVC COMMERCIAL</p><span class="video-category__number">03</span></div>
+        </article>
+        <article class="video-category" data-category="game" data-detail-path="/videos/game">
+          <a class="video-category__media" href="#videos/game" aria-label="进入游戏设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/game/forbidden-gate/forbidden-gate.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <div class="video-category__caption"><h2>游戏设计</h2><p>GAME DESIGN</p><span class="video-category__number">04</span></div>
+        </article>
+        <article class="video-category" data-category="entertainment" data-detail-path="/videos/entertainment">
+          <a class="video-category__media" href="#videos/entertainment" aria-label="进入娱乐向详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/entertainment/outfit-change/outfit-change.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <div class="video-category__caption"><h2>娱乐向</h2><p>ENTERTAINMENT</p><span class="video-category__number">05</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section id="videos/drama" class="category-detail" aria-label="漫剧设计详情页">
+    <div class="drama-shell">
+      <header class="drama-header"><div><p>DRAMA SERIES / <span data-drama-header-number>--</span></p><h1>漫剧设计</h1></div><a class="poster-close" href="#videos" aria-label="关闭并返回视频作品总览">×</a></header>
+      <div class="drama-player-row">
+        <button class="drama-switch drama-prev" type="button" aria-label="上一部漫剧" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <div class="drama-player"><video class="drama-video" controls preload="metadata"></video><div class="drama-player__empty">视频内容待添加</div></div>
+        <button class="drama-switch drama-next" type="button" aria-label="下一部漫剧" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="drama-info"><div class="drama-info__copy"><h2 data-drama-title>漫剧作品待添加</h2><p data-drama-description hidden></p><p class="drama-kicker">AI DRAMA SERIES</p></div><div class="drama-count"><span data-drama-current>00</span> / <span data-drama-total>00</span></div></div>
+      <section class="drama-assets" aria-label="制作资产">
+        <header class="drama-assets__heading"><h2>制作资产</h2><span>PRODUCTION ASSETS</span></header>
+        <div class="drama-tabs" role="tablist" aria-label="制作资产分类"><button class="drama-tab" type="button" role="tab" data-asset-tab="script" aria-selected="false">剧本</button><button class="drama-tab" type="button" role="tab" data-asset-tab="characters" aria-selected="true">角色</button><button class="drama-tab" type="button" role="tab" data-asset-tab="scenes" aria-selected="false">场景</button><button class="drama-tab" type="button" role="tab" data-asset-tab="props" aria-selected="false">道具</button></div>
+        <div class="drama-asset-content" role="tabpanel"></div>
+        <div class="drama-scrollbar" hidden><button class="drama-scroll-prev" type="button" aria-label="向左滚动资产">◀</button><div class="drama-scrollbar__track"><div class="drama-scrollbar__thumb" role="scrollbar" aria-label="资产横向滚动位置" aria-orientation="horizontal"></div></div><button class="drama-scroll-next" type="button" aria-label="向右滚动资产">▶</button></div>
+      </section>
+    </div>
+  </section>
+  <section id="app-view" class="blank-view" aria-label="记下app">
+    <iframe class="app-embed" src="jixia/index.html" title="记下 App 介绍、功能与下载" loading="eager"></iframe>
+  </section>
+  <section id="contact-view" class="blank-view" aria-label="联系我">
+    <div class="contact-layout">
+      <header class="contact-heading"><div class="contact-heading__left"><p>06 / CONTACT</p><h1>联系我</h1></div><div class="contact-heading__right"><strong>LET'S CONNECT.</strong><p>期待与你展开新的合作。</p></div></header>
+      <section class="contact-card" aria-labelledby="contact-card-title">
+        <p class="contact-card__eyebrow">GET IN TOUCH — 2026</p><h2 id="contact-card-title" class="contact-card__title">让创意，从一次交流开始。</h2><div class="contact-card__rule"></div>
+        <div class="contact-list">
+          <div class="contact-row" data-contact="name"><span class="contact-row__number">01</span><span class="contact-row__copy"><strong>姓名</strong><span data-contact-value>SUN KAI</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.5-4 3-6 7-6s6.5 2 7 6"/></svg></span></div>
+          <div class="contact-row" data-contact="direction"><span class="contact-row__number">02</span><span class="contact-row__copy"><strong>创作方向</strong><span data-contact-value>AIGC视觉设计 / AI视频制作</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 1.4 5.6L19 10l-5.6 1.4L12 17l-1.4-5.6L5 10l5.6-1.4L12 3Z"/><path d="m19 16 .6 2.4L22 19l-2.4.6L19 22l-.6-2.4L16 19l2.4-.6L19 16Z"/></svg></span></div>
+          <a class="contact-row is-disabled" data-contact="email" aria-disabled="true"><span class="contact-row__number">03</span><span class="contact-row__copy"><strong>电子邮箱</strong><span data-contact-value>待填写</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span></a>
+          <button class="contact-row is-action" data-contact="wechat" type="button" aria-haspopup="dialog" aria-controls="wechat-qr-modal" aria-expanded="false"><span class="contact-row__number">04</span><span class="contact-row__copy"><strong>微信联系</strong><span data-contact-value>点击查看二维码</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 16.5c-1 .4-2 .5-3 .5-4.4 0-8-2.7-8-6s3.6-6 8-6 8 2.7 8 6c0 .8-.2 1.6-.6 2.3"/><path d="M8 16.4 6 19l.3-3.8M13 14.5c.8-2.2 3.2-3.5 5.5-2.8 2.1.6 3.3 2.4 2.8 4.1-.5 1.8-2.8 2.8-5 2.2-.5-.1-.9-.3-1.3-.5L13 19v-2.7"/></svg></span></button>
+          <a class="contact-row is-disabled" data-contact="phone" aria-disabled="true"><span class="contact-row__number">05</span><span class="contact-row__copy"><strong>电话联系</strong><span data-contact-value>待填写</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3H4.5C3.7 3 3 3.7 3 4.5 3 13.6 10.4 21 19.5 21c.8 0 1.5-.7 1.5-1.5V17l-4-1-1.2 2c-4.1-1.5-7.3-4.7-8.8-8.8L9 8 7 3Z"/></svg></span></a>
+        </div>
+      </section>
+    </div>
+    <section class="contact-philosophy" aria-label="创作理念">
+        <div class="contact-philosophy__grid">
+          <div class="contact-philosophy__item"><div class="contact-philosophy__copy"><h3>AI 创意驱动</h3><p>以生成技术拓展视觉想象</p></div></div>
+          <div class="contact-philosophy__item"><div class="contact-philosophy__copy"><h3>视觉叙事</h3><p>用镜头与画面传递情绪</p></div></div>
+          <div class="contact-philosophy__item"><div class="contact-philosophy__copy"><h3>技术与艺术</h3><p>探索创意与技术的融合</p></div></div>
+          <div class="contact-philosophy__item"><div class="contact-philosophy__copy"><h3>持续探索</h3><p>不断突破视觉表达的边界</p></div></div>
+        </div>
+    </section>
+    <div class="contact-layout">
+      <footer class="contact-footer"><span>© 2026 SUN KAI · AIGC PORTFOLIO</span><button type="button" data-back-to-top>BACK TO TOP ↑</button></footer>
+    </div>
+    <div class="contact-toast" role="status" aria-live="polite"></div>
+  </section>
+</main>
+<div class="asset-lightbox" role="dialog" aria-modal="true" aria-label="资产大图预览"><button class="asset-lightbox__close" type="button" aria-label="关闭预览">×</button><button class="asset-lightbox__arrow asset-lightbox__prev" type="button" aria-label="上一张资产">‹</button><img alt=""><button class="asset-lightbox__arrow asset-lightbox__next" type="button" aria-label="下一张资产">›</button></div>
+<div id="wechat-qr-modal" class="wechat-modal" aria-hidden="true" inert>
+  <div class="wechat-modal__panel" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title">
+    <div class="wechat-modal__header"><h2 id="wechat-modal-title">微信联系</h2><button class="wechat-modal__close" type="button" aria-label="关闭微信二维码弹窗">×</button></div>
+    <img class="wechat-modal__image" src="assets/contact/wechat-qr.webp" alt="微信二维码，扫码添加好友">
+  </div>
+</div>
+<script>
+const contactProfile={name:'孙凯',direction:'AIGC视觉设计 / AI视频制作',email:'ua268010@gmail.com',wechat:'',phone:'15810224051'};
+(()=>{
+  const root=document.querySelector('#contact-view');if(!root)return;
+  function row(key){return root.querySelector('[data-contact="'+key+'"]')}
+  function setValue(key,value){row(key).querySelector('[data-contact-value]').textContent=value||'待填写'}
+  setValue('name',contactProfile.name);setValue('direction',contactProfile.direction);
+  setValue('email',contactProfile.email);setValue('wechat','点击查看二维码');setValue('phone',contactProfile.phone);
+  const email=row('email'),phone=row('phone');
+  if(contactProfile.email){email.href='mailto:'+contactProfile.email;email.removeAttribute('aria-disabled');email.classList.replace('is-disabled','is-action')}
+  if(contactProfile.phone){phone.href='tel:'+contactProfile.phone.replace(/\s+/g,'');phone.removeAttribute('aria-disabled');phone.classList.replace('is-disabled','is-action')}
+  root.querySelector('[data-back-to-top]').addEventListener('click',()=>root.scrollTo({top:0,behavior:'smooth'}));
+  const trigger=row('wechat'),overlay=document.querySelector('#wechat-qr-modal'),closeButton=overlay.querySelector('.wechat-modal__close');
+  const background=[document.querySelector('#portfolio-nav'),document.querySelector('main')];
+  let previousOverflow,previousGutter,previousScrollTop,previousInert;
+  function openModal(){
+    if(overlay.classList.contains('is-open'))return;
+    previousOverflow=root.style.overflowY;previousGutter=root.style.scrollbarGutter;previousScrollTop=root.scrollTop;
+    previousInert=background.map(element=>element.inert);
+    root.style.scrollbarGutter='stable';root.style.overflowY='hidden';background.forEach(element=>element.inert=true);
+    overlay.inert=false;overlay.setAttribute('aria-hidden','false');overlay.classList.add('is-open');
+    trigger.setAttribute('aria-expanded','true');closeButton.focus({preventScroll:true});
+  }
+  function closeModal(){
+    if(!overlay.classList.contains('is-open'))return;
+    overlay.classList.remove('is-open');
+    root.style.overflowY=previousOverflow;root.style.scrollbarGutter=previousGutter;root.scrollTop=previousScrollTop;
+    background.forEach((element,index)=>element.inert=previousInert[index]);
+    trigger.setAttribute('aria-expanded','false');trigger.focus({preventScroll:true});
+    overlay.setAttribute('aria-hidden','true');overlay.inert=true;
+  }
+  trigger.addEventListener('click',openModal);
+  closeButton.addEventListener('click',closeModal);
+  overlay.addEventListener('click',event=>{if(event.target===overlay)closeModal()});
+  document.addEventListener('keydown',event=>{
+    if(!overlay.classList.contains('is-open'))return;
+    if(event.key==='Escape'){event.preventDefault();event.stopImmediatePropagation();closeModal()}
+    else if(event.key==='Tab'){event.preventDefault();closeButton.focus({preventScroll:true})}
+  },true);
+})();
+/* IP & VI works: {id, name, image, thumbnail, order, thumbnailPosition?}. */
+const ipViWorks=[
+  {id:'ip-01',name:'NILO IP比例图',image:'assets/ip-vi/ip-01.webp',thumbnail:'assets/ip-vi/ip-01.webp',order:1},
+  {id:'ip-02',name:'NILO IP三视图',image:'assets/ip-vi/ip-02.webp',thumbnail:'assets/ip-vi/ip-02.webp',order:2},
+  {id:'ip-03',name:'NILO IP表情延展',image:'assets/ip-vi/ip-03.webp',thumbnail:'assets/ip-vi/ip-03.webp',order:3},
+  {id:'ip-04',name:'NILO IP产品VI延展',image:'assets/ip-vi/ip-04.webp',thumbnail:'assets/ip-vi/ip-04.webp',order:4},
+  {id:'ip-05',name:'NILO 包装与应用延展',image:'assets/ip-vi/ip-05.webp',thumbnail:'assets/ip-vi/ip-05.webp',order:5}
+];
+/* Keep fewer than seven real works centered at the established thumbnail size. */
+(()=>{const root=document.querySelector('#ip-vi'),works=[...ipViWorks].sort((a,b)=>a.order-b.order),image=root.querySelector('.ip-image'),strip=root.querySelector('.ip-thumbnails'),prev=root.querySelector('.ip-prev'),next=root.querySelector('.ip-next');let current=0,timer,drag=false,moved=false,startX=0,startScroll=0,pointer;function show(index){if(!works.length)return;current=(index+works.length)%works.length;const work=works[current];root.querySelectorAll('[data-ip-number]').forEach(el=>el.textContent=String(current+1).padStart(2,'0'));clearTimeout(timer);image.style.opacity='0';timer=setTimeout(()=>{image.alt=work.name;image.src=work.image;image.hidden=false;image.style.opacity='1'},150);[...strip.children].forEach((button,i)=>button.setAttribute('aria-current',String(i===current)));const step=(strip.children[0]?.getBoundingClientRect().width||0)+14;strip.scrollTo({left:Math.max(0,current-3)*step,behavior:'smooth'})}works.forEach((work,i)=>{const button=document.createElement('button');button.className='ip-thumbnail';button.setAttribute('aria-label',work.name);if(work.thumbnailPosition)button.style.setProperty('--thumbnail-position',work.thumbnailPosition);const thumb=document.createElement('img');thumb.alt='';thumb.src=work.thumbnail||work.image;thumb.addEventListener('error',()=>thumb.hidden=true);button.append(thumb);button.addEventListener('click',()=>show(i));strip.append(button)});image.addEventListener('error',()=>image.hidden=true);prev.disabled=next.disabled=works.length<2;prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));addEventListener('keydown',e=>{if(location.hash!=='#ip-vi'||!works.length)return;if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});strip.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();strip.scrollBy({left:e.deltaY,behavior:'smooth'})}},{passive:false});strip.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;drag=true;moved=false;pointer=e.pointerId;startX=e.clientX;startScroll=strip.scrollLeft});strip.addEventListener('pointermove',e=>{if(!drag)return;const delta=e.clientX-startX;if(Math.abs(delta)>5){moved=true;strip.setPointerCapture(pointer);strip.classList.add('is-dragging');strip.scrollLeft=startScroll-delta;e.preventDefault()}});function end(){if(!drag)return;drag=false;strip.classList.remove('is-dragging');if(moved){const step=(strip.children[0]?.getBoundingClientRect().width||0)+14;strip.scrollTo({left:Math.round(strip.scrollLeft/step)*step,behavior:'smooth'});setTimeout(()=>moved=false,0)}}strip.addEventListener('pointerup',end);strip.addEventListener('pointercancel',end);strip.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopImmediatePropagation()}},true);strip.addEventListener('dragstart',e=>e.preventDefault());if(works.length)show(0)})();
+/* Typography works are independent: {id, name, image, thumbnail, order}. */
+const typographyWorks=[
+  {id:'type-01',name:'字体设计作品01',image:'assets/typography/type-01.webp',thumbnail:'assets/typography/type-01.webp',order:1},
+  {id:'type-02',name:'字体设计作品02',image:'assets/typography/type-02.webp',thumbnail:'assets/typography/type-02.webp',order:2},
+  {id:'type-03',name:'字体设计作品03',image:'assets/typography/type-03.webp',thumbnail:'assets/typography/type-03.webp',order:3},
+  {id:'type-04',name:'字体设计作品04',image:'assets/typography/type-04.webp',thumbnail:'assets/typography/type-04.webp',order:4},
+  {id:'type-05',name:'字体设计作品05',image:'assets/typography/type-05.webp',thumbnail:'assets/typography/type-05.webp',order:5},
+  {id:'type-06',name:'字体设计作品06',image:'assets/typography/type-06.webp',thumbnail:'assets/typography/type-06.webp',order:6},
+  {id:'type-07',name:'字体设计作品07',image:'assets/typography/type-07.webp',thumbnail:'assets/typography/type-07.webp',order:7},
+  {id:'type-08',name:'字体设计作品08',image:'assets/typography/type-08.webp',thumbnail:'assets/typography/type-08.webp',order:8}
+];
+(()=>{const root=document.querySelector('#typography'),works=[...typographyWorks].sort((a,b)=>a.order-b.order),image=root.querySelector('.type-image'),strip=root.querySelector('.type-thumbnails'),prev=root.querySelector('.type-prev'),next=root.querySelector('.type-next');let current=0,timer,drag=false,moved=false,startX=0,startScroll=0,pointer;function show(index){if(!works.length)return;current=(index+works.length)%works.length;const work=works[current];root.querySelectorAll('[data-type-number]').forEach(el=>el.textContent=String(current+1).padStart(2,'0'));clearTimeout(timer);image.style.opacity='0';timer=setTimeout(()=>{image.alt=work.name;image.src=work.image;image.hidden=false;image.style.opacity='1'},150);[...strip.children].forEach((button,i)=>button.setAttribute('aria-current',String(i===current)));const step=(strip.children[0]?.getBoundingClientRect().width||0)+14;strip.scrollTo({left:Math.max(0,current-3)*step,behavior:'smooth'})}works.forEach((work,i)=>{const button=document.createElement('button');button.className='type-thumbnail';button.setAttribute('aria-label',work.name);const thumb=document.createElement('img');thumb.alt='';thumb.src=work.thumbnail||work.image;thumb.addEventListener('error',()=>thumb.hidden=true);button.append(thumb);button.addEventListener('click',()=>show(i));strip.append(button)});image.addEventListener('error',()=>image.hidden=true);prev.disabled=next.disabled=works.length<2;prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));addEventListener('keydown',e=>{if(location.hash!=='#typography'||!works.length)return;if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});strip.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();strip.scrollBy({left:e.deltaY,behavior:'smooth'})}},{passive:false});strip.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;drag=true;moved=false;pointer=e.pointerId;startX=e.clientX;startScroll=strip.scrollLeft});strip.addEventListener('pointermove',e=>{if(!drag)return;const delta=e.clientX-startX;if(Math.abs(delta)>5){moved=true;strip.setPointerCapture(pointer);strip.classList.add('is-dragging');strip.scrollLeft=startScroll-delta;e.preventDefault()}});function end(){if(!drag)return;drag=false;strip.classList.remove('is-dragging');if(moved){const step=(strip.children[0]?.getBoundingClientRect().width||0)+14;strip.scrollTo({left:Math.round(strip.scrollLeft/step)*step,behavior:'smooth'});setTimeout(()=>moved=false,0)}}strip.addEventListener('pointerup',end);strip.addEventListener('pointercancel',end);strip.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopImmediatePropagation()}},true);strip.addEventListener('dragstart',e=>e.preventDefault());if(works.length)show(0)})();
+(()=>{const strip=document.querySelector('.poster-thumbnails');let startX=0,startScroll=0,dragging=false,moved=false,pointerId=null;strip.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();strip.scrollBy({left:e.deltaY,behavior:'smooth'})}},{passive:false});strip.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;startX=e.clientX;startScroll=strip.scrollLeft;pointerId=e.pointerId;dragging=true;moved=false});strip.addEventListener('pointermove',e=>{if(!dragging)return;const delta=e.clientX-startX;if(Math.abs(delta)>5){moved=true;strip.classList.add('is-dragging');strip.setPointerCapture(pointerId);strip.scrollLeft=startScroll-delta;e.preventDefault()}});function end(){if(!dragging)return;dragging=false;strip.classList.remove('is-dragging');if(moved){const step=(strip.children[0]?.getBoundingClientRect().width||0)+13;strip.scrollTo({left:Math.round(strip.scrollLeft/step)*step,behavior:'smooth'});setTimeout(()=>moved=false,0)}}strip.addEventListener('pointerup',end);strip.addEventListener('pointercancel',end);strip.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopImmediatePropagation()}},true);strip.addEventListener('dragstart',e=>e.preventDefault());new MutationObserver(()=>{const selected=strip.querySelector('[aria-current=true]');if(!selected||!strip.clientWidth)return;const step=selected.getBoundingClientRect().width+13,index=[...strip.children].indexOf(selected);strip.scrollTo({left:Math.max(0,index-3)*step,behavior:'smooth'})}).observe(strip,{subtree:true,attributes:true,attributeFilter:['aria-current']})})();
+/* Independent Banner works: {id, name, image, thumbnail, order}. */
+const bannerWorks=[
+  {id:'banner-01',name:'春日精选像素购物',image:'assets/banners/banner-01.webp',thumbnail:'assets/banners/banner-01.webp',order:6},
+  {id:'banner-02',name:'城市疾速跑',image:'assets/banners/banner-02.webp',thumbnail:'assets/banners/banner-02.webp',order:5},
+  {id:'banner-03',name:'Pavlo清新穿搭',image:'assets/banners/banner-03.webp',thumbnail:'assets/banners/banner-03.webp',order:3},
+  {id:'banner-04',name:'夏日微醺莫吉托派对',image:'assets/banners/banner-04.webp',thumbnail:'assets/banners/banner-04.webp',order:7},
+  {id:'banner-05',name:'黄油可颂',image:'assets/banners/banner-05.webp',thumbnail:'assets/banners/banner-05.webp',order:2},
+  {id:'banner-06',name:'氨基酸洁面奶',image:'assets/banners/banner-06.webp',thumbnail:'assets/banners/banner-06.webp',order:4},
+  {id:'banner-07',name:'通往日蚀之路',image:'assets/banners/banner-07.webp',thumbnail:'assets/banners/banner-07.webp',order:1},
+  {id:'banner-08',name:'霓虹星光派对',image:'assets/banners/banner-08.webp',thumbnail:'assets/banners/banner-08.webp',order:8}
+];
+(()=>{const works=[...bannerWorks].sort((a,b)=>a.order-b.order),image=document.querySelector('.banner-image'),strip=document.querySelector('.banner-thumbnails'),prev=document.querySelector('.banner-prev'),next=document.querySelector('.banner-next');let current=0,timer;function show(index){if(!works.length)return;current=(index+works.length)%works.length;const work=works[current];document.querySelector('[data-banner-number]').textContent=String(current+1).padStart(2,'0');clearTimeout(timer);image.style.opacity='0';timer=setTimeout(()=>{image.alt=work.name;image.src=work.image;image.hidden=false;image.style.opacity='1'},150);[...strip.children].forEach((button,i)=>button.setAttribute('aria-current',String(i===current)));strip.children[current]?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}works.forEach((work,i)=>{const button=document.createElement('button');button.className='banner-thumbnail';button.setAttribute('aria-label',work.name);const thumb=document.createElement('img');thumb.alt='';thumb.src=work.thumbnail||work.image;thumb.addEventListener('error',()=>thumb.hidden=true);button.append(thumb);button.addEventListener('click',()=>show(i));strip.append(button)});image.addEventListener('error',()=>image.hidden=true);prev.disabled=next.disabled=works.length<2;prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));addEventListener('keydown',e=>{if(location.hash!=='#banner'||!works.length)return;if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});if(works.length)show(0)})();
+/* Drama works: add only verified media and assets to this array. */
+const dramaWorks=[
+  {
+    id:'night-shadow',
+    title:'夜半妖影',
+    description:'',
+    video:'assets/drama/night-shadow/night-shadow.mp4',
+    poster:'',
+    scriptFile:'assets/drama/night-shadow/night-shadow-script.md',
+    characters:[
+      {src:'assets/drama/night-shadow/characters/character-02.webp',alt:'黑衣背剑男子正面全景'},
+      {src:'assets/drama/night-shadow/characters/character-01.webp',alt:'黑衣背剑男子三视图'},
+      {src:'assets/drama/night-shadow/characters/character-04.webp',alt:'白衣女子人形正面全景'},
+      {src:'assets/drama/night-shadow/characters/character-03.webp',alt:'白衣女子人形三视图'},
+      {src:'assets/drama/night-shadow/characters/character-07.webp',alt:'白衣女子妖鬼形正面全景'},
+      {src:'assets/drama/night-shadow/characters/character-05.webp',alt:'白衣女子妖鬼形三视图 Codex版'},
+      {src:'assets/drama/night-shadow/characters/character-06.webp',alt:'白衣女子妖鬼形三视图'}
+    ],
+    scenes:[
+      {src:'assets/drama/night-shadow/scenes/scene-01.webp',alt:'雨夜旧宅室内四视角'},
+      {src:'assets/drama/night-shadow/scenes/scene-02.webp',alt:'旧宅门口与雨夜门外四视角 Codex版'}
+    ],
+    props:[
+      {src:'assets/drama/night-shadow/props/prop-01.webp',alt:'背负长剑与剑鞘多角度'},
+      {src:'assets/drama/night-shadow/props/prop-02.webp',alt:'木门横闩多角度 Codex版'},
+      {src:'assets/drama/night-shadow/props/prop-03.webp',alt:'木门横闩多角度'},
+      {src:'assets/drama/night-shadow/props/prop-04.webp',alt:'蜡烛与烛台多角度'}
+    ]
+  },
+  {
+    id:'three-days-enlightenment',
+    title:'三日悟道',
+    description:'',
+    video:'assets/drama/three-days-enlightenment/video.mp4',
+    poster:'',
+    scriptFile:'assets/drama/three-days-enlightenment/script.txt',
+    characters:[
+      {src:'assets/drama/three-days-enlightenment/characters/character-01-front.webp',alt:'黑衣背剑男子正面全景'},
+      {src:'assets/drama/three-days-enlightenment/characters/character-01-views.webp',alt:'黑衣背剑男子三视图'},
+      {src:'assets/drama/three-days-enlightenment/characters/character-02-front.webp',alt:'男子紫袍换装正面全景'},
+      {src:'assets/drama/three-days-enlightenment/characters/character-02-views.webp',alt:'男子紫袍换装三视图'},
+      {src:'assets/drama/three-days-enlightenment/characters/character-03-front.webp',alt:'白衣师傅长老正面全景'},
+      {src:'assets/drama/three-days-enlightenment/characters/character-03-views.webp',alt:'白衣师傅长老三视图'}
+    ],
+    scenes:[
+      {src:'assets/drama/three-days-enlightenment/scenes/scene-01.webp',alt:'阴池水下修炼区四视角'},
+      {src:'assets/drama/three-days-enlightenment/scenes/scene-02.webp',alt:'阴池岸边与拱石桥四视角'},
+      {src:'assets/drama/three-days-enlightenment/scenes/scene-03.webp',alt:'幽果供食旧院四视角'}
+    ],
+    props:[
+      {src:'assets/drama/three-days-enlightenment/props/prop-01.webp',alt:'既有长剑裸刃形态补充多角度'},
+      {src:'assets/drama/three-days-enlightenment/props/prop-02.webp',alt:'蓝色幽果多角度'}
+    ]
+  },
+  {
+    id:'spirit-beast-encounter',
+    title:'灵兽秘境：初次交锋',
+    description:'',
+    video:'assets/drama/spirit-beast-encounter/spirit-beast-encounter.mp4',
+    poster:'',
+    scriptFile:'assets/drama/spirit-beast-encounter/spirit-beast-encounter-script.txt',
+            characters:[
+              {src:'assets/drama/spirit-beast-encounter/characters/character-01.webp',alt:'陆沉正面全景'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-02.webp',alt:'陆沉三视图'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-03.webp',alt:'潜伏男子正面全景'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-04.webp',alt:'潜伏男子三视图'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-05.webp',alt:'雨晴正面全景'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-06.webp',alt:'雨晴三视图'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-07.webp',alt:'白色红尾兔形异兽正面全景'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-08.webp',alt:'白色红尾兔形异兽三视图'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-09.webp',alt:'蓝羽鸟形异兽正面全景'},
+              {src:'assets/drama/spirit-beast-encounter/characters/character-10.webp',alt:'蓝羽鸟形异兽三视图'}
+            ],
+    scenes:[
+      {src:'assets/drama/spirit-beast-encounter/scenes/scene-01.webp',alt:'迷雾森林小路'},
+      {src:'assets/drama/spirit-beast-encounter/scenes/scene-02.webp',alt:'森林树后伏击点'},
+      {src:'assets/drama/spirit-beast-encounter/scenes/scene-03.webp',alt:'一级危险区训练空地'}
+    ],
+    props:[
+      {src:'assets/drama/spirit-beast-encounter/props/prop-01.webp',alt:'陆沉长剑'},
+      {src:'assets/drama/spirit-beast-encounter/props/prop-02.webp',alt:'潜伏男子匕首'},
+      {src:'assets/drama/spirit-beast-encounter/props/prop-03.webp',alt:'雨晴长剑'}
+    ]
+  },
+  {
+    id:'lazy-sword-immortal',
+    title:'我靠偷懒修成剑仙',
+    description:'',
+    video:'assets/drama/lazy-sword-immortal/video.mp4',
+    poster:'',
+    scriptFile:'assets/drama/lazy-sword-immortal/script.txt',
+    characters:[
+      {src:'assets/drama/lazy-sword-immortal/characters/character-01-front.webp',alt:'陆闲舟正面全身'},
+      {src:'assets/drama/lazy-sword-immortal/characters/character-01-views.webp',alt:'陆闲舟三视图'},
+      {src:'assets/drama/lazy-sword-immortal/characters/character-02-front.webp',alt:'沈清霜正面全身'},
+      {src:'assets/drama/lazy-sword-immortal/characters/character-02-views.webp',alt:'沈清霜三视图'},
+      {src:'assets/drama/lazy-sword-immortal/characters/character-03-front.webp',alt:'阿满正面全身'},
+      {src:'assets/drama/lazy-sword-immortal/characters/character-03-views.webp',alt:'阿满三视图'},
+      {src:'assets/drama/lazy-sword-immortal/characters/character-04-front.webp',alt:'大比背景弟子正面全身'},
+      {src:'assets/drama/lazy-sword-immortal/characters/character-04-views.webp',alt:'大比背景弟子三视图'}
+    ],
+    scenes:[
+      {src:'assets/drama/lazy-sword-immortal/scenes/scene-01.webp',alt:'竹林瀑布练剑场四视角'},
+      {src:'assets/drama/lazy-sword-immortal/scenes/scene-02.webp',alt:'青云宗大比场四视角'}
+    ],
+    props:[
+      {src:'assets/drama/lazy-sword-immortal/props/prop-01.webp',alt:'原木练习剑多角度'},
+      {src:'assets/drama/lazy-sword-immortal/props/prop-02.webp',alt:'沈清霜佩剑多角度'},
+      {src:'assets/drama/lazy-sword-immortal/props/prop-03.webp',alt:'粗陶大水缸多角度'},
+      {src:'assets/drama/lazy-sword-immortal/props/prop-04.webp',alt:'编织竹篓多角度'}
+    ]
+  },
+  {
+    id:'a-love-that-came-late',
+    title:'A Love That Came Late',
+    description:'',
+    video:'assets/drama/a-love-that-came-late/video.mp4',
+    poster:'',
+    scriptFile:'assets/drama/a-love-that-came-late/script.txt',
+    characters:[
+      {src:'assets/drama/a-love-that-came-late/characters/character-01-front.webp',alt:'艾米莉校园装正面全身'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-01-views.webp',alt:'艾米莉校园装三视图'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-02-front.webp',alt:'艾米莉居家装正面全身'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-02-views.webp',alt:'艾米莉居家装三视图'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-03-front.webp',alt:'詹姆斯正面全身'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-03-views.webp',alt:'詹姆斯三视图'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-04-front.webp',alt:'金发女生正面全身'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-04-views.webp',alt:'金发女生三视图'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-05-front.webp',alt:'骑车者正面全身'},
+      {src:'assets/drama/a-love-that-came-late/characters/character-05-views.webp',alt:'骑车者三视图'}
+    ],
+    scenes:[
+      {src:'assets/drama/a-love-that-came-late/scenes/scene-01.webp',alt:'红砖校园四视角'},
+      {src:'assets/drama/a-love-that-came-late/scenes/scene-02.webp',alt:'住宅门外四视角'},
+      {src:'assets/drama/a-love-that-came-late/scenes/scene-03.webp',alt:'住宅玄关四视角'},
+      {src:'assets/drama/a-love-that-came-late/scenes/scene-04.webp',alt:'住宅客厅四视角'}
+    ],
+    props:[
+      {src:'assets/drama/a-love-that-came-late/props/prop-01.webp',alt:'黑色钱包多角度'},
+      {src:'assets/drama/a-love-that-came-late/props/prop-02.webp',alt:'艾米莉证件卡多角度'},
+      {src:'assets/drama/a-love-that-came-late/props/prop-03.webp',alt:'蓝色自行车多角度'}
+    ]
+  },
+  {
+    id:'beast-spirit-the-mystic-curse',
+    title:'Beast Spirit The Mystic Curse',
+    description:'',
+    video:'assets/drama/beast-spirit-the-mystic-curse/video.mp4',
+    poster:'',
+    scriptFile:'assets/drama/beast-spirit-the-mystic-curse/script.txt',
+    characters:[
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-01-front.webp',alt:'多里安大殿装正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-01-views.webp',alt:'多里安大殿装三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-02-front.webp',alt:'多里安回忆长袍正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-02-views.webp',alt:'多里安回忆长袍三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-03-front.webp',alt:'伯恩大殿甲胄正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-03-views.webp',alt:'伯恩大殿甲胄三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-04-front.webp',alt:'伯恩旅行装正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-04-views.webp',alt:'伯恩旅行装三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-05-front.webp',alt:'伯恩餐馆装正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-05-views.webp',alt:'伯恩餐馆装三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-06-front.webp',alt:'伯恩森林装正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-06-views.webp',alt:'伯恩森林装三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-07-front.webp',alt:'蛇族女子大殿装正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-07-views.webp',alt:'蛇族女子大殿装三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-08-front.webp',alt:'蛇族女子药师装正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-08-views.webp',alt:'蛇族女子药师装三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-09-front.webp',alt:'兔耳男子正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-09-views.webp',alt:'兔耳男子三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-10-front.webp',alt:'兽耳青年正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-10-views.webp',alt:'兽耳青年三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-11-front.webp',alt:'黑兜帽观察者正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-11-views.webp',alt:'黑兜帽观察者三视图'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-12-front.webp',alt:'苍白长臂怪物正面全身'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/characters/character-12-views.webp',alt:'苍白长臂怪物三视图'}
+    ],
+    scenes:[
+      {src:'assets/drama/beast-spirit-the-mystic-curse/scenes/scene-01.webp',alt:'冷蓝大殿四视角'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/scenes/scene-02.webp',alt:'炼金药房四视角'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/scenes/scene-03.webp',alt:'餐馆附近交谈区四视角'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/scenes/scene-04.webp',alt:'圆屋村巷药师门口四视角'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/scenes/scene-05.webp',alt:'怪物森林四视角'}
+    ],
+    props:[
+      {src:'assets/drama/beast-spirit-the-mystic-curse/props/prop-01.webp',alt:'棕色药液罐多角度'},
+      {src:'assets/drama/beast-spirit-the-mystic-curse/props/prop-02.webp',alt:'蓝光致幻蘑菇多角度'}
+    ]
+  },
+  {
+    id:'the-last-card',
+    title:'The Last Card',
+    description:'',
+    video:'assets/drama/the-last-card/video.mp4',
+    poster:'',
+    scriptFile:'assets/drama/the-last-card/script.txt',
+    characters:[
+      {src:'assets/drama/the-last-card/characters/character-01-front.webp',alt:'布兰登正面全身'},
+      {src:'assets/drama/the-last-card/characters/character-01-views.webp',alt:'布兰登三视图'},
+      {src:'assets/drama/the-last-card/characters/character-02-front.webp',alt:'警员正面全身'},
+      {src:'assets/drama/the-last-card/characters/character-02-views.webp',alt:'警员三视图'}
+    ],
+    scenes:[
+      {src:'assets/drama/the-last-card/scenes/scene-01.webp',alt:'审讯室四视角'}
+    ],
+    props:[
+      {src:'assets/drama/the-last-card/props/prop-01.webp',alt:'黑色手机多角度'},
+      {src:'assets/drama/the-last-card/props/prop-02.webp',alt:'银色手铐多角度'},
+      {src:'assets/drama/the-last-card/props/prop-03.webp',alt:'审讯桌椅多角度'},
+      {src:'assets/drama/the-last-card/props/prop-04.webp',alt:'文件夹与记录夹多角度'}
+    ]
+  }
+];
+const shortFilmWorks=[
+  {
+    id:'blood-paper-lantern',
+    title:'血纸灯',
+    description:'',
+    video:'assets/short-film/blood-paper-lantern/blood-paper-lantern.mp4',
+    poster:'',
+    scriptFile:'assets/short-film/blood-paper-lantern/blood-paper-lantern-script.txt',
+    characters:[
+      {src:'assets/short-film/blood-paper-lantern/characters/character-02.webp',alt:'陈三正面全景'},
+      {src:'assets/short-film/blood-paper-lantern/characters/character-01.webp',alt:'陈三三视图'},
+      {src:'assets/short-film/blood-paper-lantern/characters/character-04.webp',alt:'沈清漪正面全景'},
+      {src:'assets/short-film/blood-paper-lantern/characters/character-03.webp',alt:'沈清漪三视图'},
+      {src:'assets/short-film/blood-paper-lantern/characters/character-06.webp',alt:'周守灯正面全景'},
+      {src:'assets/short-film/blood-paper-lantern/characters/character-05.webp',alt:'周守灯三视图'},
+      {src:'assets/short-film/blood-paper-lantern/characters/character-08.webp',alt:'赵怀安正面全景'},
+      {src:'assets/short-film/blood-paper-lantern/characters/character-07.webp',alt:'赵怀安三视图'}
+    ],
+    scenes:[
+      {src:'assets/short-film/blood-paper-lantern/scenes/scene-01.webp',alt:'断头岩雾河'},
+      {src:'assets/short-film/blood-paper-lantern/scenes/scene-02.webp',alt:'断头岩木码头'},
+      {src:'assets/short-film/blood-paper-lantern/scenes/scene-03.webp',alt:'陈三木船内部'},
+      {src:'assets/short-film/blood-paper-lantern/scenes/scene-04.webp',alt:'古镇夜街与老人门前'}
+    ],
+    props:[
+      {src:'assets/short-film/blood-paper-lantern/props/prop-01.webp',alt:'八角红莲锁魂红灯'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-02.webp',alt:'带弧形篷架的小木船'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-03.webp',alt:'木船桨'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-04.webp',alt:'老人长烟杆'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-05.webp',alt:'门前木坐椅'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-06.webp',alt:'陈三布护腕'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-07.webp',alt:'沈清漪木发簪'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-08.webp',alt:'老人腰侧布袋'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-09.webp',alt:'赵怀安黑布巾帽'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-10.webp',alt:'赵怀安腰坠'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-11.webp',alt:'陈三束发绳'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-12.webp',alt:'古镇暖色门灯'},
+      {src:'assets/short-film/blood-paper-lantern/props/prop-13.webp',alt:'老人发髻木固定件'}
+    ]
+  },
+  {
+    id:'fake-love-real-feelings',
+    title:'Fake Love, Real Feelings',
+    description:'',
+    video:'assets/short-film/fake-love-real-feelings/video.mp4',
+    poster:'',
+    scriptFile:'assets/short-film/fake-love-real-feelings/script.txt',
+    characters:[
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-01-front.webp',alt:'西耶娜正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-01-views.webp',alt:'西耶娜三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-02-front.webp',alt:'艾略特校园装正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-02-views.webp',alt:'艾略特校园装三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-03-front.webp',alt:'艾略特后廊帽衫正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-03-views.webp',alt:'艾略特后廊帽衫三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-04-front.webp',alt:'艾略特游戏圆领正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-04-views.webp',alt:'艾略特游戏圆领三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-05-front.webp',alt:'洛根运动装正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-05-views.webp',alt:'洛根运动装三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-06-front.webp',alt:'洛根派对装正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-06-views.webp',alt:'洛根派对装三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-07-front.webp',alt:'诺亚正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-07-views.webp',alt:'诺亚三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-08-front.webp',alt:'卢卡斯正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-08-views.webp',alt:'卢卡斯三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-09-front.webp',alt:'眼镜双辫女生正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-09-views.webp',alt:'眼镜双辫女生三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-10-front.webp',alt:'白衬衣女生正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-10-views.webp',alt:'白衬衣女生三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-11-front.webp',alt:'黑衬衣女生正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-11-views.webp',alt:'黑衬衣女生三视图'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-12-front.webp',alt:'碎花裙女生正面全身'},
+      {src:'assets/short-film/fake-love-real-feelings/characters/character-12-views.webp',alt:'碎花裙女生三视图'}
+    ],
+    scenes:[
+      {src:'assets/short-film/fake-love-real-feelings/scenes/scene-01.webp',alt:'校园运动场四视角'},
+      {src:'assets/short-film/fake-love-real-feelings/scenes/scene-02.webp',alt:'树荫步道四视角'},
+      {src:'assets/short-film/fake-love-real-feelings/scenes/scene-03.webp',alt:'校园拱廊四视角'},
+      {src:'assets/short-film/fake-love-real-feelings/scenes/scene-04.webp',alt:'厨房餐厅四视角'},
+      {src:'assets/short-film/fake-love-real-feelings/scenes/scene-05.webp',alt:'客厅书架角四视角'},
+      {src:'assets/short-film/fake-love-real-feelings/scenes/scene-06.webp',alt:'住宅后廊四视角'}
+    ],
+    props:[
+      {src:'assets/short-film/fake-love-real-feelings/props/prop-01.webp',alt:'橄榄球多角度'},
+      {src:'assets/short-film/fake-love-real-feelings/props/prop-02.webp',alt:'智能手机多角度'},
+      {src:'assets/short-film/fake-love-real-feelings/props/prop-03.webp',alt:'复古相机多角度'}
+    ]
+  },
+  {
+    id:'calico-cat-wen-prophecy',
+    title:'三花猫的闻家预言',
+    description:'',
+    video:'assets/short-film/calico-cat-wen-prophecy/video.mp4',
+    poster:'',
+    scriptFile:'assets/short-film/calico-cat-wen-prophecy/script.txt',
+    characters:[
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-01-front.webp',alt:'梁杏正面全景'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-01-views.webp',alt:'梁杏三视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-02-front.webp',alt:'闻疏淮正面全景'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-02-views.webp',alt:'闻疏淮三视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-03-front.webp',alt:'老陈正面全景'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-03-views.webp',alt:'老陈三视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-04-front.webp',alt:'王叔正面全景'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-04-views.webp',alt:'王叔三视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-05-front.webp',alt:'闻疏冷正面全景'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-05-views.webp',alt:'闻疏冷三视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-06-front.webp',alt:'闻疏渡正面全景'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-06-views.webp',alt:'闻疏渡三视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-07-front.webp',alt:'闻疏珩正面全景'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/characters/character-07-views.webp',alt:'闻疏珩三视图'}
+    ],
+    scenes:[
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-01.webp',alt:'雨夜巷道四视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-02.webp',alt:'闻家宅外四视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-03.webp',alt:'闻家客厅四视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-04.webp',alt:'原书破败客厅四视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-05.webp',alt:'原书医院病房四视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-06.webp',alt:'原书狱中四视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-07.webp',alt:'原书高楼天台四视图'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/scenes/scene-08.webp',alt:'原书出租屋四视图'}
+    ],
+    props:[
+      {src:'assets/short-film/calico-cat-wen-prophecy/props/prop-01.webp',alt:'黑色长轿车多角度'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/props/prop-02.webp',alt:'破旧纸箱多角度'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/props/prop-03.webp',alt:'车底可疑装置多角度'},
+      {src:'assets/short-film/calico-cat-wen-prophecy/props/prop-04.webp',alt:'深色长大衣多角度'}
+    ]
+  }
+];
+const tvcWorks=[
+  {
+    id:'peach-essence',
+    title:'蜜桃精华',
+    description:'',
+    video:'assets/tvc/peach-essence/peach-essence.mp4',
+    poster:'',
+    scriptFile:'assets/tvc/peach-essence/peach-essence-script.txt',
+    characters:[
+      {src:'assets/tvc/peach-essence/characters/character-01.webp',alt:'角色正面面部与左右侧面参考'},
+      {src:'assets/tvc/peach-essence/characters/character-02.webp',alt:'面部极近特写参考'},
+      {src:'assets/tvc/peach-essence/characters/character-03.webp',alt:'滴管使用动作参考'},
+      {src:'assets/tvc/peach-essence/characters/character-04.webp',alt:'指尖涂抹动作参考'},
+      {src:'assets/tvc/peach-essence/characters/character-05.webp',alt:'手指握持滴管瓶盖参考'}
+    ],
+    scenes:[
+      {src:'assets/tvc/peach-essence/scenes/scene-01.webp',alt:'粉白色烟雾场景'},
+      {src:'assets/tvc/peach-essence/scenes/scene-02.webp',alt:'蜜桃产品静物摄影棚'},
+      {src:'assets/tvc/peach-essence/scenes/scene-03.webp',alt:'女性护肤特写摄影棚'}
+    ],
+    props:[
+      {src:'assets/tvc/peach-essence/props/prop-01.webp',alt:'切开的半颗桃子'},
+      {src:'assets/tvc/peach-essence/props/prop-02.webp',alt:'透明玻璃滴管'},
+      {src:'assets/tvc/peach-essence/props/prop-03.webp',alt:'透明精华液'},
+      {src:'assets/tvc/peach-essence/props/prop-04.webp',alt:'新鲜桃肉切块'},
+      {src:'assets/tvc/peach-essence/props/prop-05.webp',alt:'Anua桃子70烟酰胺精华瓶'}
+    ]
+  },
+  {
+    id:'watch-texture-of-time',
+    title:'腕表：时间的质感',
+    description:'',
+    video:'assets/tvc/watch-texture-of-time/video.mp4',
+    poster:'',
+    scriptFile:'assets/tvc/watch-texture-of-time/script.txt',
+    characters:[
+      {src:'assets/tvc/watch-texture-of-time/characters/watch-front.webp',alt:'腕表正面全景'},
+      {src:'assets/tvc/watch-texture-of-time/characters/watch-views.webp',alt:'腕表多视角'},
+      {src:'assets/tvc/watch-texture-of-time/characters/watch-details.webp',alt:'腕表局部细节组合'}
+    ],
+    scenes:[
+      {src:'assets/tvc/watch-texture-of-time/scenes/dark-macro.webp',alt:'深黑微距环境'},
+      {src:'assets/tvc/watch-texture-of-time/scenes/gray-display.webp',alt:'深灰展示环境'}
+    ],
+    props:[]
+  },
+  {
+    id:'kay-ali',
+    title:'KAY ALI带货',
+    description:'',
+    video:'assets/tvc/kay-ali/video.mp4',
+    poster:'',
+    scriptFile:'assets/tvc/kay-ali/script.txt',
+    characters:[
+      {src:'assets/tvc/kay-ali/characters/character-01-front.webp',alt:'香水展示女性正面全景'},
+      {src:'assets/tvc/kay-ali/characters/character-01-views.webp',alt:'香水展示女性三视图'}
+    ],
+    scenes:[
+      {src:'assets/tvc/kay-ali/scenes/scene-01.webp',alt:'猩红镜面摄影棚四视角'},
+      {src:'assets/tvc/kay-ali/scenes/scene-02.webp',alt:'红绸产品空间四视角'},
+      {src:'assets/tvc/kay-ali/scenes/scene-03.webp',alt:'漂浮苹果空间四视角'},
+      {src:'assets/tvc/kay-ali/scenes/scene-04.webp',alt:'红色液流空间四视角'},
+      {src:'assets/tvc/kay-ali/scenes/scene-05.webp',alt:'红玻璃几何台座四视角'}
+    ],
+    props:[
+      {src:'assets/tvc/kay-ali/props/prop-01.webp',alt:'KAYALI香水瓶多角度'},
+      {src:'assets/tvc/kay-ali/props/prop-02.webp',alt:'红苹果多角度'}
+    ]
+  },
+  {
+    id:'aloe-clear-moment',
+    title:'芦荟的清透一刻',
+    description:'',
+    video:'assets/tvc/aloe-clear-moment/video.mp4',
+    poster:'',
+    scriptFile:'assets/tvc/aloe-clear-moment/script.md',
+    characters:[
+      {src:'assets/tvc/aloe-clear-moment/characters/character-01-front.webp',alt:'护肤模特正面全景'},
+      {src:'assets/tvc/aloe-clear-moment/characters/character-01-views.webp',alt:'护肤模特三视图'}
+    ],
+    scenes:[
+      {src:'assets/tvc/aloe-clear-moment/scenes/scene-01.webp',alt:'芦荟植物微距摄影区四视图'},
+      {src:'assets/tvc/aloe-clear-moment/scenes/scene-02.webp',alt:'暖色肤感摄影区四视图'},
+      {src:'assets/tvc/aloe-clear-moment/scenes/scene-03.webp',alt:'浅蓝产品静物摄影台四视图'}
+    ],
+    props:[
+      {src:'assets/tvc/aloe-clear-moment/props/prop-01.webp',alt:'Aloe绿色按压瓶多角度'},
+      {src:'assets/tvc/aloe-clear-moment/props/prop-02.webp',alt:'芦荟叶与切片多角度'},
+      {src:'assets/tvc/aloe-clear-moment/props/prop-03.webp',alt:'透明玻璃滴管多角度'},
+      {src:'assets/tvc/aloe-clear-moment/props/prop-04.webp',alt:'透明凝胶材质多角度'}
+    ]
+  }
+];
+const gameWorks=[
+  {
+    id:'forbidden-gate',
+    title:'禁域之门',
+    description:'',
+    video:'assets/game/forbidden-gate/forbidden-gate.mp4',
+    poster:'',
+    scriptFile:'assets/game/forbidden-gate/forbidden-gate-script.txt',
+    characters:[
+      {src:'assets/game/forbidden-gate/characters/character-02.webp',alt:'披风冒险者正面全景'},
+      {src:'assets/game/forbidden-gate/characters/character-01.webp',alt:'披风冒险者三视图'},
+      {src:'assets/game/forbidden-gate/characters/character-04.webp',alt:'巨型铠甲守卫正面全景'},
+      {src:'assets/game/forbidden-gate/characters/character-03.webp',alt:'巨型铠甲守卫三视图'},
+      {src:'assets/game/forbidden-gate/characters/character-06.webp',alt:'装甲巨蛛正面全景'},
+      {src:'assets/game/forbidden-gate/characters/character-05.webp',alt:'装甲巨蛛三视图'}
+    ],
+    scenes:[
+      {src:'assets/game/forbidden-gate/scenes/scene-01.webp',alt:'巨门柱廊战斗殿四视角'},
+      {src:'assets/game/forbidden-gate/scenes/scene-02.webp',alt:'红门双阶大厅与门后暗室四视角'}
+    ],
+    props:[
+      {src:'assets/game/forbidden-gate/props/prop-01.webp',alt:'双手巨剑多角度'}
+    ]
+  },
+  {
+    id:'purple-core-temple',
+    title:'紫核神庙',
+    description:'',
+    video:'assets/game/purple-core-temple/purple-core-temple.mp4',
+    poster:'',
+    scriptFile:'assets/game/purple-core-temple/purple-core-temple-script.txt',
+    characters:[
+      {src:'assets/game/purple-core-temple/characters/character-02.webp',alt:'角色01正面全景'},
+      {src:'assets/game/purple-core-temple/characters/character-01.webp',alt:'角色01三视图'},
+      {src:'assets/game/purple-core-temple/characters/character-04.webp',alt:'角色02正面全景'},
+      {src:'assets/game/purple-core-temple/characters/character-03.webp',alt:'角色02三视图'},
+      {src:'assets/game/purple-core-temple/characters/character-06.webp',alt:'角色03正面全景'},
+      {src:'assets/game/purple-core-temple/characters/character-05.webp',alt:'角色03三视图'},
+      {src:'assets/game/purple-core-temple/characters/character-08.webp',alt:'角色04正面全景'},
+      {src:'assets/game/purple-core-temple/characters/character-07.webp',alt:'角色04三视图'},
+      {src:'assets/game/purple-core-temple/characters/character-10.webp',alt:'角色05正面全景'},
+      {src:'assets/game/purple-core-temple/characters/character-09.webp',alt:'角色05三视图'},
+      {src:'assets/game/purple-core-temple/characters/character-12.webp',alt:'角色06正面全景'},
+      {src:'assets/game/purple-core-temple/characters/character-11.webp',alt:'角色06三视图'},
+      {src:'assets/game/purple-core-temple/characters/character-14.webp',alt:'角色07正面全景'},
+      {src:'assets/game/purple-core-temple/characters/character-13.webp',alt:'角色07三视图'}
+    ],
+    scenes:[
+      {src:'assets/game/purple-core-temple/scenes/scene-01.webp',alt:'紫核神庙场景01四视角'},
+      {src:'assets/game/purple-core-temple/scenes/scene-02.webp',alt:'紫核神庙场景02四视角'}
+    ],
+    props:[
+      {src:'assets/game/purple-core-temple/props/prop-01.webp',alt:'紫核神庙道具01多角度'},
+      {src:'assets/game/purple-core-temple/props/prop-02.webp',alt:'紫核神庙道具02多角度'},
+      {src:'assets/game/purple-core-temple/props/prop-03.webp',alt:'紫核神庙道具03多角度'}
+    ]
+  }
+];
+const entertainmentWorks=[
+  {
+    id:'outfit-change',
+    title:'三种穿搭',
+    videoSrc:'assets/entertainment/outfit-change/outfit-change.mp4',
+    poster:'',
+    scriptFile:'assets/entertainment/outfit-change/script.txt',
+    characters:[
+      {src:'assets/entertainment/outfit-change/characters/character-01.webp',alt:'粉棕色甜美学院风造型'},
+      {src:'assets/entertainment/outfit-change/characters/character-02.webp',alt:'粉棕色甜美学院风造型三视图'},
+      {src:'assets/entertainment/outfit-change/characters/character-03.webp',alt:'灰绿色学院风造型'},
+      {src:'assets/entertainment/outfit-change/characters/character-04.webp',alt:'灰绿色学院风造型三视图'},
+      {src:'assets/entertainment/outfit-change/characters/character-05.webp',alt:'棕色条纹学院风造型'},
+      {src:'assets/entertainment/outfit-change/characters/character-06.webp',alt:'棕色条纹学院风造型三视图'}
+    ],
+    scenes:[
+      {src:'assets/entertainment/outfit-change/scenes/scene-01.webp',alt:'纯白无缝摄影棚'}
+    ],
+    props:[
+      {src:'assets/entertainment/outfit-change/props/prop-01.webp',alt:'叠放的书籍'},
+      {src:'assets/entertainment/outfit-change/props/prop-02.webp',alt:'黑色小册子'},
+      {src:'assets/entertainment/outfit-change/props/prop-03.webp',alt:'黄色塑料弧面座椅'},
+      {src:'assets/entertainment/outfit-change/props/prop-04.webp',alt:'深棕色手提包，带绿色装饰'},
+      {src:'assets/entertainment/outfit-change/props/prop-05.webp',alt:'深棕色小手提包，带玩偶挂件'},
+      {src:'assets/entertainment/outfit-change/props/prop-06.webp',alt:'棕色长方形皮质手提包'}
+    ]
+  },
+  {
+    id:'weekly-outfit-diary',
+    title:'一周穿搭日记',
+    videoSrc:'assets/entertainment/weekly-outfit-diary/video.mp4',
+    poster:'',
+    scriptFile:'assets/entertainment/weekly-outfit-diary/script.txt',
+    characters:[
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-01-front.webp',alt:'周一造型正面全身'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-01-views.webp',alt:'周一造型三视图'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-02-front.webp',alt:'周二造型正面全身'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-02-views.webp',alt:'周二造型三视图'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-03-front.webp',alt:'周三造型正面全身'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-03-views.webp',alt:'周三造型三视图'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-04-front.webp',alt:'周四造型正面全身'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-04-views.webp',alt:'周四造型三视图'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-05-front.webp',alt:'周五造型正面全身'},
+      {src:'assets/entertainment/weekly-outfit-diary/characters/character-05-views.webp',alt:'周五造型三视图'}
+    ],
+    scenes:[
+      {src:'assets/entertainment/weekly-outfit-diary/scenes/scene-01.webp',alt:'纯白无缝影棚四视角'}
+    ],
+    props:[
+      {src:'assets/entertainment/weekly-outfit-diary/props/prop-01.webp',alt:'奶油白褶皱手提包多角度'},
+      {src:'assets/entertainment/weekly-outfit-diary/props/prop-02.webp',alt:'粉白混合花束多角度'},
+      {src:'assets/entertainment/weekly-outfit-diary/props/prop-03.webp',alt:'粉色郁金香花束多角度'},
+      {src:'assets/entertainment/weekly-outfit-diary/props/prop-04.webp',alt:'金属银色迷你手提包多角度'}
+    ]
+  }
+];
+(()=>{const configs=[
+  {route:'videos/drama',english:'DRAMA SERIES',chinese:'漫剧设计',kicker:'AI DRAMA SERIES',works:dramaWorks},
+  {route:'videos/short-film',english:'SHORT FILM',chinese:'短片设计',kicker:'SHORT FILM',works:shortFilmWorks},
+  {route:'videos/tvc',english:'TVC COMMERCIAL',chinese:'TVC设计',kicker:'TVC COMMERCIAL',works:tvcWorks},
+  {route:'videos/game',english:'GAME DESIGN',chinese:'游戏设计',kicker:'GAME DESIGN',works:gameWorks},
+  {route:'videos/entertainment',english:'ENTERTAINMENT',chinese:'娱乐向',kicker:'ENTERTAINMENT',works:entertainmentWorks}
+],template=document.getElementById('videos/drama'),lightbox=document.querySelector('.asset-lightbox'),lightboxImage=lightbox.querySelector('img'),lightboxPrev=lightbox.querySelector('.asset-lightbox__prev'),lightboxNext=lightbox.querySelector('.asset-lightbox__next'),preview={assets:[],index:0};
+configs.slice(1).forEach(config=>{const root=template.cloneNode(true);root.id=config.route;root.setAttribute('aria-label',config.chinese+'详情页');root.querySelector('.drama-header p').innerHTML=config.english+' / <span data-drama-header-number>--</span>';root.querySelector('.drama-header h1').textContent=config.chinese;root.querySelector('.drama-kicker').textContent=config.kicker;root.querySelector('[data-drama-title]').textContent=config.chinese+'作品待添加';template.parentNode.insertBefore(root,template.nextSibling)});
+function showPreview(index){if(!preview.assets.length)return;preview.index=(index+preview.assets.length)%preview.assets.length;const asset=preview.assets[preview.index];lightboxImage.src=typeof asset==='string'?asset:asset.src;lightboxImage.alt=typeof asset==='string'?'视频制作资产':asset.alt||'视频制作资产';lightbox.classList.add('is-open');lightboxPrev.disabled=lightboxNext.disabled=preview.assets.length<2}
+lightbox.querySelector('.asset-lightbox__close').addEventListener('click',()=>lightbox.classList.remove('is-open'));lightbox.addEventListener('click',event=>{if(event.target===lightbox)lightbox.classList.remove('is-open')});lightboxPrev.addEventListener('click',()=>showPreview(preview.index-1));lightboxNext.addEventListener('click',()=>showPreview(preview.index+1));
+function setup(config){const root=document.getElementById(config.route),works=[...config.works],video=root.querySelector('.drama-video'),empty=root.querySelector('.drama-player__empty'),prev=root.querySelector('.drama-prev'),next=root.querySelector('.drama-next'),content=root.querySelector('.drama-asset-content'),scrollbar=root.querySelector('.drama-scrollbar'),track=root.querySelector('.drama-scrollbar__track'),thumb=root.querySelector('.drama-scrollbar__thumb'),scrollPrev=root.querySelector('.drama-scroll-prev'),scrollNext=root.querySelector('.drama-scroll-next'),tabs=[...root.querySelectorAll('.drama-tab')];let current=0,activeAssets=[],dragging=false,dragStart=0,thumbStart=0,switchFrame=0,switchMetrics=null,leftShift=0,rightShift=0,verticalShift=0;
+function work(){return works[current]||null}function listFor(tab){const item=work();return item&&Array.isArray(item[tab])?item[tab]:[]}
+function fitVideo(){if(!video.videoWidth||!video.videoHeight)return;const mediaRatio=video.videoWidth/video.videoHeight,frameRatio=16/9;if(mediaRatio>=frameRatio){video.style.width='100%';video.style.height='auto'}else{video.style.width='auto';video.style.height='100%'}video.dataset.orientation=mediaRatio>1?'landscape':mediaRatio<1?'portrait':'square'}
+function measureSwitch(){
+  if(!root.getClientRects().length)return null;
+  const gallery=root.querySelector('.drama-assets'),target=content.querySelector('.drama-asset-strip')||content,galleryRect=gallery.getBoundingClientRect(),targetRect=target.getBoundingClientRect(),leftRect=prev.getBoundingClientRect(),rightRect=next.getBoundingClientRect(),rootRect=root.getBoundingClientRect();
+  const baseLeft=leftRect.left-leftShift,baseRight=rightRect.left-rightShift,baseCenter=leftRect.top-verticalShift+leftRect.height/2,targetCenter=targetRect.top+targetRect.height/2;
+  const safeLeft=rootRect.left+8,safeRight=rootRect.left+root.clientWidth-8;
+  const availableGap=Math.min(22,galleryRect.left-safeLeft-leftRect.width,safeRight-galleryRect.right-rightRect.width);
+  const targetLeft=galleryRect.left-availableGap-leftRect.width,targetRight=galleryRect.right+availableGap;
+  const travel=Math.max(0,targetCenter-baseCenter),scrollDistance=Math.max(1,Math.min(travel,root.scrollHeight-root.clientHeight));
+  const entryProgress=(galleryRect.top-baseCenter-leftRect.height/2-8)/Math.max(1,travel);
+  const canExpand=availableGap>=8&&entryProgress>.05&&targetLeft<=baseLeft&&targetRight>=baseRight&&travel>0;
+  return{canExpand,travel,scrollDistance,leftTravel:targetLeft-baseLeft,rightTravel:targetRight-baseRight,spreadEnd:Math.min(.5,entryProgress)};
+}
+function updateSwitchPosition(){
+  switchFrame=0;if(!switchMetrics)switchMetrics=measureSwitch();
+  const metrics=switchMetrics,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const progress=metrics?.canExpand&&!reduced?Math.min(1,Math.max(0,root.scrollTop/metrics.scrollDistance)):0;
+  const spread=metrics?.canExpand?Math.min(1,progress/metrics.spreadEnd):0;
+  leftShift=metrics?.leftTravel*spread||0;rightShift=metrics?.rightTravel*spread||0;verticalShift=metrics?.travel*progress||0;
+  prev.style.setProperty('--drama-switch-x',leftShift+'px');next.style.setProperty('--drama-switch-x',rightShift+'px');
+  prev.style.setProperty('--drama-switch-y',verticalShift+'px');next.style.setProperty('--drama-switch-y',verticalShift+'px');
+}
+function scheduleSwitchPosition(){if(!switchFrame)switchFrame=requestAnimationFrame(updateSwitchPosition)}
+function invalidateSwitchPosition(){switchMetrics=null;scheduleSwitchPosition()}
+function updateScrollbar(){const strip=content.querySelector('.drama-asset-strip');if(!strip){scrollbar.hidden=true;return}const overflow=strip.scrollWidth-strip.clientWidth>1;scrollbar.hidden=!overflow;if(!overflow)return;const trackWidth=track.clientWidth,thumbWidth=Math.max(40,trackWidth*strip.clientWidth/strip.scrollWidth),maxThumb=trackWidth-thumbWidth,maxScroll=strip.scrollWidth-strip.clientWidth;thumb.style.width=thumbWidth+'px';thumb.style.transform='translateX('+(maxScroll?strip.scrollLeft/maxScroll*maxThumb:0)+'px)';thumb.setAttribute('aria-valuenow',String(Math.round(maxScroll?strip.scrollLeft/maxScroll*100:0)))}
+function renderAssets(tab='characters'){tabs.forEach(button=>button.setAttribute('aria-selected',String(button.dataset.assetTab===tab)));scrollbar.hidden=true;content.replaceChildren();const item=work();if(tab==='script'){if(item?.scriptFile){const frame=document.createElement('iframe');frame.className='drama-script-frame';frame.src=item.scriptFile;frame.title=(item.title||'当前作品')+'剧本';content.append(frame);return}const box=document.createElement('div');box.className='drama-script';const heading=document.createElement('h3');heading.textContent='剧本';const paragraph=document.createElement('p');paragraph.textContent=item?.script||'剧本内容待添加';box.append(heading,paragraph);content.append(box);return}activeAssets=listFor(tab);if(!activeAssets.length){const state=document.createElement('div');state.className='drama-assets__empty';state.textContent=({characters:'角色资产待添加',scenes:'场景资产待添加',props:'道具资产待添加'})[tab];content.append(state);return}const strip=document.createElement('div');strip.className='drama-asset-strip';activeAssets.forEach((asset,index)=>{const button=document.createElement('button');button.type='button';button.className='drama-asset-card '+(tab==='characters'?'drama-asset-card--portrait':'drama-asset-card--landscape');button.setAttribute('aria-label','查看'+(typeof asset==='string'?'资产图片':asset.alt||'资产图片'));const image=document.createElement('img');image.src=typeof asset==='string'?asset:asset.src;image.alt=typeof asset==='string'?'':asset.alt||'';button.append(image);button.addEventListener('click',()=>{preview.assets=activeAssets;showPreview(index)});strip.append(button)});strip.addEventListener('scroll',updateScrollbar,{passive:true});strip.addEventListener('wheel',event=>{if(Math.abs(event.deltaY)>Math.abs(event.deltaX)){event.preventDefault();strip.scrollLeft+=event.deltaY}},{passive:false});content.append(strip);requestAnimationFrame(()=>{strip.scrollLeft=0;updateScrollbar()})}
+function renderWork(index){const description=root.querySelector('[data-drama-description]');video.pause();if(Number.isFinite(video.duration))video.currentTime=0;if(works.length){current=(index+works.length)%works.length;const item=work(),src=item.videoSrc||item.video||'';if(src){empty.textContent='';empty.hidden=true;video.src=src;video.poster=item.poster||'';video.load()}else{video.removeAttribute('src');video.poster=item.poster||'';video.load();empty.textContent='视频内容待添加';empty.hidden=false}root.querySelector('[data-drama-title]').textContent=item.title||'未命名视频作品';description.textContent='';description.hidden=true;root.querySelector('[data-drama-header-number]').textContent=String(current+1).padStart(2,'0');root.querySelector('[data-drama-current]').textContent=String(current+1).padStart(2,'0');root.querySelector('[data-drama-total]').textContent=String(works.length).padStart(2,'0')}else{video.removeAttribute('src');video.removeAttribute('poster');video.load();empty.textContent='视频内容待添加';empty.hidden=false;root.querySelector('[data-drama-title]').textContent=config.chinese+'作品待添加';description.textContent='';description.hidden=true;root.querySelector('[data-drama-header-number]').textContent='--';root.querySelector('[data-drama-current]').textContent='00';root.querySelector('[data-drama-total]').textContent='00'}prev.disabled=next.disabled=works.length<2;renderAssets('characters')}
+video.addEventListener('loadedmetadata',()=>{fitVideo();if(work()&&(work().videoSrc||work().video)){empty.textContent='';empty.hidden=true}});video.addEventListener('canplay',()=>{fitVideo();if(video.currentSrc){empty.textContent='';empty.hidden=true}});video.addEventListener('error',()=>{if(work()&&(work().videoSrc||work().video)){empty.textContent='视频加载失败';empty.hidden=false}});tabs.forEach(button=>button.addEventListener('click',()=>{renderAssets(button.dataset.assetTab);invalidateSwitchPosition()}));prev.addEventListener('click',()=>renderWork(current-1));next.addEventListener('click',()=>renderWork(current+1));scrollPrev.addEventListener('click',()=>content.querySelector('.drama-asset-strip')?.scrollBy({left:-content.clientWidth*.75,behavior:'smooth'}));scrollNext.addEventListener('click',()=>content.querySelector('.drama-asset-strip')?.scrollBy({left:content.clientWidth*.75,behavior:'smooth'}));thumb.addEventListener('pointerdown',event=>{dragging=true;dragStart=event.clientX;thumbStart=new DOMMatrixReadOnly(getComputedStyle(thumb).transform).m41;thumb.setPointerCapture(event.pointerId)});thumb.addEventListener('pointermove',event=>{if(!dragging)return;const strip=content.querySelector('.drama-asset-strip');if(!strip)return;const maxThumb=track.clientWidth-thumb.offsetWidth,nextX=Math.max(0,Math.min(maxThumb,thumbStart+event.clientX-dragStart));strip.scrollLeft=maxThumb?nextX/maxThumb*(strip.scrollWidth-strip.clientWidth):0});thumb.addEventListener('pointerup',()=>dragging=false);thumb.addEventListener('pointercancel',()=>dragging=false);root.addEventListener('scroll',scheduleSwitchPosition,{passive:true});addEventListener('keydown',event=>{if(location.hash!=='#'+config.route||lightbox.classList.contains('is-open')||works.length<2)return;if(event.key==='ArrowLeft')renderWork(current-1);if(event.key==='ArrowRight')renderWork(current+1)});addEventListener('resize',updateScrollbar);addEventListener('resize',invalidateSwitchPosition);addEventListener('hashchange',invalidateSwitchPosition);if('ResizeObserver'in window)new ResizeObserver(invalidateSwitchPosition).observe(root.querySelector('.drama-assets'));renderWork(0);invalidateSwitchPosition()}
+configs.forEach(setup);addEventListener('keydown',event=>{if(event.key==='Escape'&&lightbox.classList.contains('is-open'))lightbox.classList.remove('is-open')})})();
+(()=>{const routes=new Set(['home','resume','images','videos','contact']),imageCategories=new Set(['poster','banner','typography','ip-vi']),videoCategories=new Set(['videos/drama','videos/short-film','videos/tvc','videos/game','videos/entertainment']),links=[...document.querySelectorAll('.portfolio-links a[data-view]')];function render(){const raw=location.hash.slice(1),isImageDetail=imageCategories.has(raw),isVideoDetail=videoCategories.has(raw),view=raw==='jixia-app'?'app':raw==='portfolio'||isImageDetail?'images':isVideoDetail?'videos':routes.has(raw)?raw:'home';document.body.dataset.detail=String(isImageDetail||isVideoDetail);document.body.dataset.view=view;links.forEach(link=>{if(link.dataset.view===view)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')})}addEventListener('hashchange',render);render()})();
+(()=>{const section=document.querySelector('.experience-section'),scrollRoot=document.querySelector('#resume-view');if(!section||!scrollRoot||!('IntersectionObserver'in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const items=[...section.querySelectorAll('[data-reveal]')];section.querySelectorAll('.experience-item').forEach(article=>[...article.querySelectorAll('[data-reveal]')].forEach((item,index)=>item.style.setProperty('--reveal-delay',index*80+'ms')));section.classList.add('is-reveal-ready');const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('is-visible');observer.unobserve(entry.target)})},{root:scrollRoot,rootMargin:'0px 0px -10% 0px',threshold:.08});items.forEach(item=>observer.observe(item))})();
+(()=>{const scrollRoot=document.querySelector('#resume-view'),skills=document.querySelector('.skills-section'),contact=document.querySelector('.resume-contact');if(!scrollRoot||!skills||!contact||!('IntersectionObserver'in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const skillItems=[...skills.querySelectorAll('[data-skills-reveal]')],contactItems=[...contact.querySelectorAll('[data-contact-reveal]')];skillItems.slice(1).forEach((item,index)=>item.style.setProperty('--reveal-delay',index*100+'ms'));contactItems.forEach((item,index)=>item.style.setProperty('--reveal-delay',index*80+'ms'));skills.classList.add('is-reveal-ready');contact.classList.add('is-reveal-ready');const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('is-visible');observer.unobserve(entry.target)})},{root:scrollRoot,rootMargin:'0px 0px -10% 0px',threshold:.08});[...skillItems,...contactItems].forEach(item=>observer.observe(item))})();
+(()=>{const root=document.querySelector('#resume-view'),button=root?.querySelector('[data-resume-back-to-top]');if(!root||!button)return;button.addEventListener('click',()=>root.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}))})();
+/* Add real works here: {id, name, image, thumbnail, order}. No sample works are published. */
+const posterWorks=[
+  {id:'poster-06',name:'回声之室：记忆的留白',image:'assets/posters/poster-06.webp',thumbnail:'assets/posters/poster-06.webp',order:1},
+  {id:'poster-08',name:'记忆开始生长：未来信号档案',image:'assets/posters/poster-08.webp',thumbnail:'assets/posters/poster-08.webp',order:2},
+  {id:'poster-05',name:'ChatGPT 图像 2026年10月8日 16_28_03',image:'assets/posters/poster-05.webp',thumbnail:'assets/posters/poster-05.webp',order:3},
+  {id:'poster-02',name:'ChatGPT 图像 2026年10月8日 16_28_16',image:'assets/posters/poster-02.webp',thumbnail:'assets/posters/poster-02.webp',order:4},
+  {id:'poster-11',name:'镰仓落日海岸列车海报',image:'assets/posters/poster-11.webp',thumbnail:'assets/posters/poster-11.webp',order:5},
+  {id:'poster-07',name:'混沌盛放',image:'assets/posters/poster-07.webp',thumbnail:'assets/posters/poster-07.webp',order:6},
+  {id:'poster-09',name:'街头暴走',image:'assets/posters/poster-09.webp',thumbnail:'assets/posters/poster-09.webp',order:7},
+  {id:'poster-10',name:'崛起之上：城市新视野',image:'assets/posters/poster-10.webp',thumbnail:'assets/posters/poster-10.webp',order:8},
+  {id:'poster-04',name:'云端甜梦：保持柔软',image:'assets/posters/poster-04.webp',thumbnail:'assets/posters/poster-04.webp',order:9},
+  {id:'poster-13',name:'霓虹脑域：思维',image:'assets/posters/poster-13.webp',thumbnail:'assets/posters/poster-13.webp',order:10},
+  {id:'poster-03',name:'汽水爆发热力时刻',image:'assets/posters/poster-03.webp',thumbnail:'assets/posters/poster-03.webp',order:11},
+  {id:'poster-01',name:'银感净界',image:'assets/posters/poster-01.webp',thumbnail:'assets/posters/poster-01.webp',order:12},
+  {id:'poster-12',name:'灵苑之境：极光花园鶴影',image:'assets/posters/poster-12.webp',thumbnail:'assets/posters/poster-12.webp',order:13}
+];
+(()=>{const works=[...posterWorks].sort((a,b)=>a.order-b.order),image=document.querySelector('.poster-image'),strip=document.querySelector('.poster-thumbnails'),prev=document.querySelector('.poster-prev'),next=document.querySelector('.poster-next');let current=0,timer;function show(index){if(!works.length)return;current=(index+works.length)%works.length;const work=works[current];document.querySelectorAll('[data-poster-number]').forEach(el=>el.textContent=String(current+1).padStart(2,'0'));clearTimeout(timer);image.style.opacity='0';timer=setTimeout(()=>{image.alt=work.name;image.src=work.image;image.hidden=false;image.style.opacity='1'},150);[...strip.children].forEach((button,i)=>button.setAttribute('aria-current',String(i===current)));strip.children[current]?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}works.forEach((work,i)=>{const button=document.createElement('button');button.className='poster-thumbnail';button.setAttribute('aria-label',work.name);const thumb=document.createElement('img');thumb.alt='';thumb.src=work.thumbnail||work.image;button.append(thumb);button.addEventListener('click',()=>show(i));strip.append(button)});image.addEventListener('error',()=>{image.hidden=true});prev.disabled=next.disabled=works.length<2;prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));addEventListener('keydown',e=>{if(location.hash!=='#poster'||!works.length)return;if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});if(works.length)show(0)})();
+(()=>{const el=document.querySelector('#spotlight'),viewport=document.querySelector('#viewport');if(!el||!viewport)return;if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.style.display='none';return}const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),OFF=-9999;let tx=OFF,ty=OFF,sx=OFF,sy=OFF,engaged=false,raf=null,RADIUS=260,W=0,H=0;function rect(){return viewport.getBoundingClientRect()}function size(){const r=rect();W=Math.max(1,Math.round(r.width));H=Math.max(1,Math.round(r.height));canvas.width=W;canvas.height=H;RADIUS=Math.min(260,Math.max(90,Math.min(W,H)*.32))}function point(e){const r=rect();return{x:e.clientX-r.left,y:e.clientY-r.top}}function draw(){ctx.clearRect(0,0,W,H);const g=ctx.createRadialGradient(sx,sy,0,sx,sy,RADIUS);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(.4,'rgba(0,0,0,1)');g.addColorStop(.6,'rgba(0,0,0,.75)');g.addColorStop(.75,'rgba(0,0,0,.4)');g.addColorStop(.88,'rgba(0,0,0,.12)');g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);const url='url('+canvas.toDataURL()+')';el.style.webkitMaskImage=url;el.style.maskImage=url}function frame(){sx+=(tx-sx)*.1;sy+=(ty-sy)*.1;draw();if(engaged||Math.hypot(tx-sx,ty-sy)>1)raf=requestAnimationFrame(frame);else raf=null}function start(){if(!raf)raf=requestAnimationFrame(frame)}function engage(x,y){if(!engaged){engaged=true;sx=tx=x;sy=ty=y}else{tx=x;ty=y}start()}function release(){engaged=false;tx=ty=OFF;start()}function follow(e){const p=point(e);engage(p.x,p.y)}size();draw();addEventListener('resize',()=>{size();draw()});viewport.addEventListener('pointerenter',follow);viewport.addEventListener('pointermove',follow);viewport.addEventListener('pointerleave',release);viewport.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')follow(e)});viewport.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse')release()});viewport.addEventListener('pointercancel',e=>{if(e.pointerType!=='mouse')release()})})();
+</script>
+</body>
+</html>
