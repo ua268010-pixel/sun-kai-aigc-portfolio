@@ -260,6 +260,15 @@
     .contact-list{width:100%;margin:8px 0 0}
     .contact-row{width:100%;height:60px;display:grid;grid-template-columns:48px minmax(0,1fr) 24px;align-items:center;gap:16px;border:0;border-bottom:1px solid #D8D8D8;background:transparent;padding:0;color:#1A1A1A;text-decoration:none;text-align:left;font:inherit;transition:background-color .22s ease}
     .contact-row:last-child{border-bottom:0}.contact-row__number{color:#AAA;font-size:12px;letter-spacing:.12em}.contact-row__copy{min-width:0;display:flex;flex-direction:column;gap:5px}.contact-row__copy strong{font-size:15px;font-weight:500}.contact-row__copy span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#777;font-size:13px}.contact-row__icon{width:20px;height:20px;color:#777;transition:color .22s ease}.contact-row__icon svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.contact-row:hover{background:#DCDCDC}.contact-row:hover .contact-row__icon{color:#1A1A1A}.contact-row.is-action{cursor:pointer}.contact-row.is-action:hover .contact-row__copy span{color:#1A1A1A}.contact-row.is-disabled{cursor:default}
+    .contact-row--phone .contact-row__phone-main{grid-column:1/3;display:grid;grid-template-columns:48px minmax(0,1fr);align-items:center;gap:16px;min-width:0;height:100%;color:inherit;text-decoration:none}
+    .contact-row--phone:hover .contact-row__copy [data-contact-value]{color:#1A1A1A}
+    .contact-row__phone-copy{position:relative;appearance:none;justify-self:start;border:0;background:transparent;padding:0;cursor:pointer}
+    .contact-row__phone-copy:focus-visible{outline:1px solid #777;outline-offset:4px;border-radius:2px}
+    .contact-row__phone-tip{position:absolute;z-index:1;right:calc(100% + 10px);top:50%;padding:7px 11px;border:1px solid #CDCDCD;border-radius:8px;background:#FAFAFA;color:#1A1A1A;font-size:11px;line-height:1.2;white-space:nowrap;opacity:0;transform:translate(4px,-50%);pointer-events:none;transition:opacity .18s ease,transform .18s ease}
+    .contact-row__phone-tip::after{content:'';position:absolute;right:-5px;top:50%;width:8px;height:8px;border-top:1px solid #CDCDCD;border-right:1px solid #CDCDCD;background:#FAFAFA;transform:translateY(-50%) rotate(45deg)}
+    .contact-row--phone:hover .contact-row__phone-tip,.contact-row__phone-copy:focus-visible .contact-row__phone-tip,.contact-row--phone.is-phone-feedback .contact-row__phone-tip{opacity:1;transform:translate(0,-50%)}
+    .contact-row__phone-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+    @media (hover:none),(max-width:520px){.contact-row__phone-tip{display:none}}
     .contact-philosophy{width:calc(100% + 80px);margin:56px 0 0 -40px;padding:30px clamp(32px,6vw,120px) 34px;border-top:1px solid #C5C5C5;background:#E3E3E3}
     .contact-philosophy__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
     .contact-philosophy__item{min-width:0;min-height:86px;display:flex;align-items:flex-start;gap:16px}
@@ -538,7 +547,7 @@
           <div class="contact-row" data-contact="direction"><span class="contact-row__number">02</span><span class="contact-row__copy"><strong>创作方向</strong><span data-contact-value>AIGC视觉设计 / AI视频制作</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 1.4 5.6L19 10l-5.6 1.4L12 17l-1.4-5.6L5 10l5.6-1.4L12 3Z"/><path d="m19 16 .6 2.4L22 19l-2.4.6L19 22l-.6-2.4L16 19l2.4-.6L19 16Z"/></svg></span></div>
           <a class="contact-row is-disabled" data-contact="email" aria-disabled="true"><span class="contact-row__number">03</span><span class="contact-row__copy"><strong>电子邮箱</strong><span data-contact-value>待填写</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span></a>
           <button class="contact-row is-action" data-contact="wechat" type="button" aria-haspopup="dialog" aria-controls="wechat-qr-modal" aria-expanded="false"><span class="contact-row__number">04</span><span class="contact-row__copy"><strong>微信联系</strong><span data-contact-value>点击查看二维码</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 16.5c-1 .4-2 .5-3 .5-4.4 0-8-2.7-8-6s3.6-6 8-6 8 2.7 8 6c0 .8-.2 1.6-.6 2.3"/><path d="M8 16.4 6 19l.3-3.8M13 14.5c.8-2.2 3.2-3.5 5.5-2.8 2.1.6 3.3 2.4 2.8 4.1-.5 1.8-2.8 2.8-5 2.2-.5-.1-.9-.3-1.3-.5L13 19v-2.7"/></svg></span></button>
-          <a class="contact-row is-disabled" data-contact="phone" aria-disabled="true"><span class="contact-row__number">05</span><span class="contact-row__copy"><strong>电话联系</strong><span data-contact-value>待填写</span></span><span class="contact-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3H4.5C3.7 3 3 3.7 3 4.5 3 13.6 10.4 21 19.5 21c.8 0 1.5-.7 1.5-1.5V17l-4-1-1.2 2c-4.1-1.5-7.3-4.7-8.8-8.8L9 8 7 3Z"/></svg></span></a>
+          <div class="contact-row contact-row--phone" data-contact="phone"><a class="contact-row__phone-main" data-phone-link><span class="contact-row__number">05</span><span class="contact-row__copy"><strong>电话联系</strong><span data-contact-value>待填写</span></span></a><button class="contact-row__icon contact-row__phone-copy" data-phone-copy type="button" aria-label="复制手机号码"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4.5C3.7 3 3 3.7 3 4.5 3 13.6 10.4 21 19.5 21c.8 0 1.5-.7 1.5-1.5V17l-4-1-1.2 2c-4.1-1.5-7.3-4.7-8.8-8.8L9 8 7 3Z"/></svg><span class="contact-row__phone-tip" aria-hidden="true">点击图标复制</span><span class="contact-row__phone-status" role="status" aria-live="polite" aria-atomic="true"></span></button></div>
         </div>
       </section>
     </div>
@@ -573,7 +582,25 @@ const contactProfile={name:'孙凯',direction:'AIGC视觉设计 / AI视频制作
   setValue('email',contactProfile.email);setValue('wechat','点击查看二维码');setValue('phone',contactProfile.phone);
   const email=row('email'),phone=row('phone');
   if(contactProfile.email){email.href='mailto:'+contactProfile.email;email.removeAttribute('aria-disabled');email.classList.replace('is-disabled','is-action')}
-  if(contactProfile.phone){phone.href='tel:'+contactProfile.phone.replace(/\s+/g,'');phone.removeAttribute('aria-disabled');phone.classList.replace('is-disabled','is-action')}
+  const phoneLink=phone.querySelector('[data-phone-link]'),phoneCopy=phone.querySelector('[data-phone-copy]');
+  if(contactProfile.phone)phoneLink.href='tel:'+contactProfile.phone.replace(/\s+/g,'');
+  const phoneTip=phone.querySelector('.contact-row__phone-tip'),phoneStatus=phone.querySelector('.contact-row__phone-status');
+  let phoneFeedbackTimer,phoneCopyAttempt=0;
+  phoneCopy.addEventListener('click',async()=>{
+    const attempt=++phoneCopyAttempt,number=contactProfile.phone.replace(/\D/g,'');
+    clearTimeout(phoneFeedbackTimer);
+    try{
+      if(!number||!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(number);
+      if(attempt!==phoneCopyAttempt)return;
+      phoneTip.textContent='✓ 复制成功';phoneStatus.textContent='手机号复制成功';
+    }catch{
+      if(attempt!==phoneCopyAttempt)return;
+      phoneTip.textContent='复制失败，请重试';phoneStatus.textContent='手机号复制失败，请重试';
+    }
+    phone.classList.add('is-phone-feedback');
+    phoneFeedbackTimer=setTimeout(()=>{phoneTip.textContent='点击图标复制';phoneStatus.textContent='';phone.classList.remove('is-phone-feedback')},1500);
+  });
   root.querySelector('[data-back-to-top]').addEventListener('click',()=>root.scrollTo({top:0,behavior:'smooth'}));
   const trigger=row('wechat'),overlay=document.querySelector('#wechat-qr-modal'),closeButton=overlay.querySelector('.wechat-modal__close');
   const background=[document.querySelector('#portfolio-nav'),document.querySelector('main')];
