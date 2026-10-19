@@ -295,7 +295,8 @@
       .portfolio-brand__title{font-size:17px;letter-spacing:1.4px}
       .portfolio-brand__subtitle{font-size:9px;letter-spacing:2px}
       #home-view,#viewport{background-position:58% center}
-      .home-copy{top:clamp(20px,5vh,42px);left:14px;width:calc(100vw - 28px);max-height:calc(100dvh - var(--nav-h) - 38px);overflow:auto;padding:18px;border:1px solid rgba(255,255,255,.42);border-radius:18px;background:rgba(231,231,231,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+      #stage{bottom:auto;height:calc(100vh - var(--nav-h));height:calc(100dvh - var(--nav-h));display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto}
+      .home-copy{position:relative;top:auto;left:auto;transform:none;flex:none;margin:auto;width:calc(100vw - 28px);max-height:none;overflow:visible;padding:18px;border:1px solid rgba(255,255,255,.42);border-radius:18px;background:rgba(231,231,231,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
       .home-copy h1{font-size:clamp(25px,7vw,30px)}
       #images-view,#videos-view,#contact-view{padding:28px 18px 42px}
       #contact-view{overflow-x:hidden}
@@ -340,7 +341,7 @@
       .contact-philosophy__grid{grid-template-columns:1fr;gap:14px}.contact-philosophy__item{min-height:0}
       .drama-assets__heading span{display:none}
     }
-    @media (max-height:560px) and (max-width:760px){.home-copy{top:20px}.home-copy h1{margin-top:10px}.home-copy__description{margin-top:10px}.home-copy__actions{margin-top:12px}}
+    @media (max-height:560px) and (max-width:760px){.home-copy h1{margin-top:10px}.home-copy__description{margin-top:10px}.home-copy__actions{margin-top:12px}}
   </style>
 </head>
 <body>
