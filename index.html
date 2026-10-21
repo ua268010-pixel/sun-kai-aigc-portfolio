@@ -235,8 +235,10 @@
     .drama-switch svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
     .drama-player{position:relative;width:100%;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#000;display:grid;place-items:center}
     .drama-player video{display:block;width:auto;height:auto;max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain!important;object-position:center center!important;background:#000;position:static;inset:auto;transform:none!important}
-    .drama-player__empty{position:absolute;inset:0;display:grid;place-items:center;color:#888;font-size:14px;letter-spacing:.08em;pointer-events:none}
+    .drama-player__empty{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:8px;color:#888;font-size:14px;letter-spacing:.08em;pointer-events:none}
     .drama-player__empty[hidden]{display:none}
+    .drama-player__retry{pointer-events:auto;padding:6px 12px;border:1px solid #888;border-radius:999px;background:#E7E7E7;color:#1A1A1A;font:inherit;letter-spacing:0;cursor:pointer}
+    .drama-player__retry[hidden]{display:none}
     .drama-info{width:min(1050px,calc(100% - 132px));margin:20px auto 0;display:flex;justify-content:space-between;gap:48px;align-items:flex-start}
     .drama-info__copy{max-width:760px}.drama-info__copy h2{margin:0;font-size:26px;font-weight:400}.drama-info__copy p{margin:10px 0 0;color:#777;font-size:14px;line-height:1.7}.drama-info__copy .drama-kicker{font-size:12px;letter-spacing:.16em}
     .drama-count{font-size:15px;letter-spacing:.12em;white-space:nowrap;color:#777}
@@ -494,25 +496,25 @@
       <header class="visual-heading"><p>SELECTED VIDEO WORKS</p><h1>AI VIDEO DESIGN</h1><p class="visual-subtitle">AI 视频设计</p></header>
       <div class="video-grid video-grid--featured">
         <article class="video-category" data-category="drama" data-detail-path="/videos/drama">
-          <a class="video-category__media" href="#videos/drama" aria-label="进入漫剧设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/drama/night-shadow/night-shadow.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <a class="video-category__media" href="#videos/drama" aria-label="进入漫剧设计详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/drama/night-shadow/poster.jpg" alt="" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
           <div class="video-category__caption"><h2>漫剧设计</h2><p>AI DRAMA SERIES</p><span class="video-category__number">01</span></div>
         </article>
         <article class="video-category" data-category="short-film" data-detail-path="/videos/short-film">
-          <a class="video-category__media" href="#videos/short-film" aria-label="进入短片设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/short-film/blood-paper-lantern/blood-paper-lantern.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <a class="video-category__media" href="#videos/short-film" aria-label="进入短片设计详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/short-film/blood-paper-lantern/poster.jpg" alt="" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
           <div class="video-category__caption"><h2>短片设计</h2><p>SHORT FILM</p><span class="video-category__number">02</span></div>
         </article>
       </div>
       <div class="video-grid video-grid--secondary">
         <article class="video-category" data-category="tvc" data-detail-path="/videos/tvc">
-          <a class="video-category__media" href="#videos/tvc" aria-label="进入TVC设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/tvc/peach-essence/peach-essence.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <a class="video-category__media" href="#videos/tvc" aria-label="进入TVC设计详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/tvc/peach-essence/poster.jpg" alt="" loading="lazy" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
           <div class="video-category__caption"><h2>TVC设计</h2><p>TVC COMMERCIAL</p><span class="video-category__number">03</span></div>
         </article>
         <article class="video-category" data-category="game" data-detail-path="/videos/game">
-          <a class="video-category__media" href="#videos/game" aria-label="进入游戏设计详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/game/forbidden-gate/forbidden-gate.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <a class="video-category__media" href="#videos/game" aria-label="进入游戏设计详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/game/forbidden-gate/poster.jpg" alt="" loading="lazy" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
           <div class="video-category__caption"><h2>游戏设计</h2><p>GAME DESIGN</p><span class="video-category__number">04</span></div>
         </article>
         <article class="video-category" data-category="entertainment" data-detail-path="/videos/entertainment">
-          <a class="video-category__media" href="#videos/entertainment" aria-label="进入娱乐向详情页"><div class="video-category__cover" aria-hidden="true"><video src="assets/entertainment/outfit-change/outfit-change.mp4#t=0.001" preload="auto" muted playsinline tabindex="-1"></video></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <a class="video-category__media" href="#videos/entertainment" aria-label="进入娱乐向详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/entertainment/outfit-change/poster.jpg" alt="" loading="lazy" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
           <div class="video-category__caption"><h2>娱乐向</h2><p>ENTERTAINMENT</p><span class="video-category__number">05</span></div>
         </article>
       </div>
@@ -523,7 +525,7 @@
       <header class="drama-header"><div><p>DRAMA SERIES / <span data-drama-header-number>--</span></p><h1>漫剧设计</h1></div><a class="poster-close" href="#videos" aria-label="关闭并返回视频作品总览">×</a></header>
       <div class="drama-player-row">
         <button class="drama-switch drama-prev" type="button" aria-label="上一部漫剧" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-        <div class="drama-player"><video class="drama-video" controls preload="metadata"></video><div class="drama-player__empty">视频内容待添加</div></div>
+        <div class="drama-player"><video class="drama-video" controls preload="metadata" playsinline></video><div class="drama-player__empty" aria-live="polite"><span data-player-message>视频内容待添加</span><button class="drama-player__retry" type="button" hidden>重试</button></div></div>
         <button class="drama-switch drama-next" type="button" aria-label="下一部漫剧" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
       <div class="drama-info"><div class="drama-info__copy"><h2 data-drama-title>漫剧作品待添加</h2><p data-drama-description hidden></p><p class="drama-kicker">AI DRAMA SERIES</p></div><div class="drama-count"><span data-drama-current>00</span> / <span data-drama-total>00</span></div></div>
@@ -1192,7 +1194,7 @@ const entertainmentWorks=[
   {
     id:'weekly-outfit-diary',
     title:'一周穿搭日记',
-    videoSrc:'assets/entertainment/weekly-outfit-diary/video.mp4',
+    videoSrc:'assets/entertainment/weekly-outfit-diary/video-web.mp4',
     poster:'',
     scriptFile:'assets/entertainment/weekly-outfit-diary/script.txt',
     characters:[
@@ -1278,9 +1280,61 @@ function updateSwitchPosition(){
 function scheduleSwitchPosition(){if(!switchFrame)switchFrame=requestAnimationFrame(updateSwitchPosition)}
 function invalidateSwitchPosition(){switchMetrics=null;scheduleSwitchPosition()}
 function updateScrollbar(){const strip=content.querySelector('.drama-asset-strip');if(!strip){scrollbar.hidden=true;return}const overflow=strip.scrollWidth-strip.clientWidth>1;scrollbar.hidden=!overflow;if(!overflow)return;const trackWidth=track.clientWidth,thumbWidth=Math.max(40,trackWidth*strip.clientWidth/strip.scrollWidth),maxThumb=trackWidth-thumbWidth,maxScroll=strip.scrollWidth-strip.clientWidth;thumb.style.width=thumbWidth+'px';thumb.style.transform='translateX('+(maxScroll?strip.scrollLeft/maxScroll*maxThumb:0)+'px)';thumb.setAttribute('aria-valuenow',String(Math.round(maxScroll?strip.scrollLeft/maxScroll*100:0)))}
-function renderAssets(tab='characters'){tabs.forEach(button=>button.setAttribute('aria-selected',String(button.dataset.assetTab===tab)));scrollbar.hidden=true;content.replaceChildren();const item=work();if(tab==='script'){if(item?.scriptFile){const frame=document.createElement('iframe');frame.className='drama-script-frame';frame.src=item.scriptFile;frame.title=(item.title||'当前作品')+'剧本';content.append(frame);return}const box=document.createElement('div');box.className='drama-script';const heading=document.createElement('h3');heading.textContent='剧本';const paragraph=document.createElement('p');paragraph.textContent=item?.script||'剧本内容待添加';box.append(heading,paragraph);content.append(box);return}activeAssets=listFor(tab);if(!activeAssets.length){const state=document.createElement('div');state.className='drama-assets__empty';state.textContent=({characters:'角色资产待添加',scenes:'场景资产待添加',props:'道具资产待添加'})[tab];content.append(state);return}const strip=document.createElement('div');strip.className='drama-asset-strip';activeAssets.forEach((asset,index)=>{const button=document.createElement('button');button.type='button';button.className='drama-asset-card '+(tab==='characters'?'drama-asset-card--portrait':'drama-asset-card--landscape');button.setAttribute('aria-label','查看'+(typeof asset==='string'?'资产图片':asset.alt||'资产图片'));const image=document.createElement('img');image.src=typeof asset==='string'?asset:asset.src;image.alt=typeof asset==='string'?'':asset.alt||'';button.append(image);button.addEventListener('click',()=>{preview.assets=activeAssets;showPreview(index)});strip.append(button)});strip.addEventListener('scroll',updateScrollbar,{passive:true});strip.addEventListener('wheel',event=>{if(Math.abs(event.deltaY)>Math.abs(event.deltaX)){event.preventDefault();strip.scrollLeft+=event.deltaY}},{passive:false});content.append(strip);requestAnimationFrame(()=>{strip.scrollLeft=0;updateScrollbar()})}
-function renderWork(index){const description=root.querySelector('[data-drama-description]');video.pause();if(Number.isFinite(video.duration))video.currentTime=0;if(works.length){current=(index+works.length)%works.length;const item=work(),src=item.videoSrc||item.video||'';if(src){empty.textContent='';empty.hidden=true;video.src=src;video.poster=item.poster||'';video.load()}else{video.removeAttribute('src');video.poster=item.poster||'';video.load();empty.textContent='视频内容待添加';empty.hidden=false}root.querySelector('[data-drama-title]').textContent=item.title||'未命名视频作品';description.textContent='';description.hidden=true;root.querySelector('[data-drama-header-number]').textContent=String(current+1).padStart(2,'0');root.querySelector('[data-drama-current]').textContent=String(current+1).padStart(2,'0');root.querySelector('[data-drama-total]').textContent=String(works.length).padStart(2,'0')}else{video.removeAttribute('src');video.removeAttribute('poster');video.load();empty.textContent='视频内容待添加';empty.hidden=false;root.querySelector('[data-drama-title]').textContent=config.chinese+'作品待添加';description.textContent='';description.hidden=true;root.querySelector('[data-drama-header-number]').textContent='--';root.querySelector('[data-drama-current]').textContent='00';root.querySelector('[data-drama-total]').textContent='00'}prev.disabled=next.disabled=works.length<2;renderAssets('characters')}
-video.addEventListener('loadedmetadata',()=>{fitVideo();if(work()&&(work().videoSrc||work().video)){empty.textContent='';empty.hidden=true}});video.addEventListener('canplay',()=>{fitVideo();if(video.currentSrc){empty.textContent='';empty.hidden=true}});video.addEventListener('error',()=>{if(work()&&(work().videoSrc||work().video)){empty.textContent='视频加载失败';empty.hidden=false}});tabs.forEach(button=>button.addEventListener('click',()=>{renderAssets(button.dataset.assetTab);invalidateSwitchPosition()}));prev.addEventListener('click',()=>renderWork(current-1));next.addEventListener('click',()=>renderWork(current+1));scrollPrev.addEventListener('click',()=>content.querySelector('.drama-asset-strip')?.scrollBy({left:-content.clientWidth*.75,behavior:'smooth'}));scrollNext.addEventListener('click',()=>content.querySelector('.drama-asset-strip')?.scrollBy({left:content.clientWidth*.75,behavior:'smooth'}));thumb.addEventListener('pointerdown',event=>{dragging=true;dragStart=event.clientX;thumbStart=new DOMMatrixReadOnly(getComputedStyle(thumb).transform).m41;thumb.setPointerCapture(event.pointerId)});thumb.addEventListener('pointermove',event=>{if(!dragging)return;const strip=content.querySelector('.drama-asset-strip');if(!strip)return;const maxThumb=track.clientWidth-thumb.offsetWidth,nextX=Math.max(0,Math.min(maxThumb,thumbStart+event.clientX-dragStart));strip.scrollLeft=maxThumb?nextX/maxThumb*(strip.scrollWidth-strip.clientWidth):0});thumb.addEventListener('pointerup',()=>dragging=false);thumb.addEventListener('pointercancel',()=>dragging=false);root.addEventListener('scroll',scheduleSwitchPosition,{passive:true});addEventListener('keydown',event=>{if(location.hash!=='#'+config.route||lightbox.classList.contains('is-open')||works.length<2)return;if(event.key==='ArrowLeft')renderWork(current-1);if(event.key==='ArrowRight')renderWork(current+1)});addEventListener('resize',updateScrollbar);addEventListener('resize',invalidateSwitchPosition);addEventListener('hashchange',invalidateSwitchPosition);if('ResizeObserver'in window)new ResizeObserver(invalidateSwitchPosition).observe(root.querySelector('.drama-assets'));renderWork(0);invalidateSwitchPosition()}
+function renderAssets(tab='characters'){tabs.forEach(button=>button.setAttribute('aria-selected',String(button.dataset.assetTab===tab)));scrollbar.hidden=true;content.replaceChildren();const item=work();if(tab==='script'){if(item?.scriptFile){const frame=document.createElement('iframe');frame.className='drama-script-frame';frame.src=item.scriptFile;frame.title=(item.title||'当前作品')+'剧本';content.append(frame);return}const box=document.createElement('div');box.className='drama-script';const heading=document.createElement('h3');heading.textContent='剧本';const paragraph=document.createElement('p');paragraph.textContent=item?.script||'剧本内容待添加';box.append(heading,paragraph);content.append(box);return}activeAssets=listFor(tab);if(!activeAssets.length){const state=document.createElement('div');state.className='drama-assets__empty';state.textContent=({characters:'角色资产待添加',scenes:'场景资产待添加',props:'道具资产待添加'})[tab];content.append(state);return}const strip=document.createElement('div');strip.className='drama-asset-strip';activeAssets.forEach((asset,index)=>{const button=document.createElement('button');button.type='button';button.className='drama-asset-card '+(tab==='characters'?'drama-asset-card--portrait':'drama-asset-card--landscape');button.setAttribute('aria-label','查看'+(typeof asset==='string'?'资产图片':asset.alt||'资产图片'));const image=document.createElement('img');image.src=typeof asset==='string'?asset:asset.src;image.alt=typeof asset==='string'?'':asset.alt||'';image.loading='lazy';image.decoding='async';button.append(image);button.addEventListener('click',()=>{preview.assets=activeAssets;showPreview(index)});strip.append(button)});strip.addEventListener('scroll',updateScrollbar,{passive:true});strip.addEventListener('wheel',event=>{if(Math.abs(event.deltaY)>Math.abs(event.deltaX)){event.preventDefault();strip.scrollLeft+=event.deltaY}},{passive:false});content.append(strip);requestAnimationFrame(()=>{strip.scrollLeft=0;updateScrollbar()})}
+function setPlayerMessage(message='',retry=false){
+  empty.querySelector('[data-player-message]').textContent=message;
+  empty.querySelector('.drama-player__retry').hidden=!retry;
+  empty.hidden=!message;
+}
+function syncVideo(){
+  const item=work(),src=item?.videoSrc||item?.video||'',active=location.hash==='#'+config.route;
+  if(!active||!src){
+    if(video.hasAttribute('src')){video.pause();video.removeAttribute('src');video.load()}
+    setPlayerMessage(active&&!src?'视频内容待添加':'');
+    return;
+  }
+  video.poster=item.poster||src.replace(/[^/]+$/,'poster.jpg');
+  if(video.getAttribute('src')!==src){video.pause();video.src=src}
+  setPlayerMessage('');
+}
+function renderWork(index){
+  const description=root.querySelector('[data-drama-description]');
+  video.pause();
+  if(Number.isFinite(video.duration))video.currentTime=0;
+  if(works.length){
+    current=(index+works.length)%works.length;
+    const item=work();
+    root.querySelector('[data-drama-title]').textContent=item.title||'未命名视频作品';
+    description.textContent='';description.hidden=true;
+    root.querySelector('[data-drama-header-number]').textContent=String(current+1).padStart(2,'0');
+    root.querySelector('[data-drama-current]').textContent=String(current+1).padStart(2,'0');
+    root.querySelector('[data-drama-total]').textContent=String(works.length).padStart(2,'0');
+  }else{
+    video.removeAttribute('poster');
+    root.querySelector('[data-drama-title]').textContent=config.chinese+'作品待添加';
+    description.textContent='';description.hidden=true;
+    root.querySelector('[data-drama-header-number]').textContent='--';
+    root.querySelector('[data-drama-current]').textContent='00';
+    root.querySelector('[data-drama-total]').textContent='00';
+  }
+  prev.disabled=next.disabled=works.length<2;
+  renderAssets('characters');
+  syncVideo();
+}
+video.addEventListener('loadedmetadata',fitVideo);
+video.addEventListener('canplay',fitVideo);
+video.addEventListener('play',()=>{if(video.readyState<3)setPlayerMessage('正在加载视频…')});
+video.addEventListener('waiting',()=>{if(!video.paused)setPlayerMessage('正在加载视频…')});
+video.addEventListener('stalled',()=>{if(!video.paused)setPlayerMessage('正在加载视频…')});
+video.addEventListener('playing',()=>setPlayerMessage(''));
+video.addEventListener('pause',()=>{if(!video.error)setPlayerMessage('')});
+video.addEventListener('error',()=>{if(location.hash==='#'+config.route&&video.hasAttribute('src'))setPlayerMessage('视频加载失败，请重试',true)});
+empty.querySelector('.drama-player__retry').addEventListener('click',()=>{
+  setPlayerMessage('正在加载视频…');
+  video.load();
+  video.play().catch(()=>setPlayerMessage('视频加载失败，请重试',true));
+});
+tabs.forEach(button=>button.addEventListener('click',()=>{renderAssets(button.dataset.assetTab);invalidateSwitchPosition()}));prev.addEventListener('click',()=>renderWork(current-1));next.addEventListener('click',()=>renderWork(current+1));scrollPrev.addEventListener('click',()=>content.querySelector('.drama-asset-strip')?.scrollBy({left:-content.clientWidth*.75,behavior:'smooth'}));scrollNext.addEventListener('click',()=>content.querySelector('.drama-asset-strip')?.scrollBy({left:content.clientWidth*.75,behavior:'smooth'}));thumb.addEventListener('pointerdown',event=>{dragging=true;dragStart=event.clientX;thumbStart=new DOMMatrixReadOnly(getComputedStyle(thumb).transform).m41;thumb.setPointerCapture(event.pointerId)});thumb.addEventListener('pointermove',event=>{if(!dragging)return;const strip=content.querySelector('.drama-asset-strip');if(!strip)return;const maxThumb=track.clientWidth-thumb.offsetWidth,nextX=Math.max(0,Math.min(maxThumb,thumbStart+event.clientX-dragStart));strip.scrollLeft=maxThumb?nextX/maxThumb*(strip.scrollWidth-strip.clientWidth):0});thumb.addEventListener('pointerup',()=>dragging=false);thumb.addEventListener('pointercancel',()=>dragging=false);root.addEventListener('scroll',scheduleSwitchPosition,{passive:true});addEventListener('keydown',event=>{if(location.hash!=='#'+config.route||lightbox.classList.contains('is-open')||works.length<2)return;if(event.key==='ArrowLeft')renderWork(current-1);if(event.key==='ArrowRight')renderWork(current+1)});addEventListener('resize',updateScrollbar);addEventListener('resize',invalidateSwitchPosition);addEventListener('hashchange',invalidateSwitchPosition);addEventListener('hashchange',syncVideo);if('ResizeObserver'in window)new ResizeObserver(invalidateSwitchPosition).observe(root.querySelector('.drama-assets'));renderWork(0);invalidateSwitchPosition()}
 configs.forEach(setup);addEventListener('keydown',event=>{if(event.key==='Escape'&&lightbox.classList.contains('is-open'))lightbox.classList.remove('is-open')})})();
 (()=>{const routes=new Set(['home','resume','images','videos','contact']),imageCategories=new Set(['poster','banner','typography','ip-vi']),videoCategories=new Set(['videos/drama','videos/short-film','videos/tvc','videos/game','videos/entertainment']),links=[...document.querySelectorAll('.portfolio-links a[data-view]')];function render(){const raw=location.hash.slice(1),isImageDetail=imageCategories.has(raw),isVideoDetail=videoCategories.has(raw),view=raw==='jixia-app'?'app':raw==='portfolio'||isImageDetail?'images':isVideoDetail?'videos':routes.has(raw)?raw:'home';document.body.dataset.detail=String(isImageDetail||isVideoDetail);document.body.dataset.view=view;links.forEach(link=>{if(link.dataset.view===view)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')})}addEventListener('hashchange',render);render()})();
 (()=>{const toggle=document.querySelector('.portfolio-menu-toggle'),nav=document.querySelector('#portfolio-links');if(!toggle||!nav)return;function close(){document.body.classList.remove('nav-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','打开导航菜单')}toggle.addEventListener('click',()=>{const open=!document.body.classList.contains('nav-open');document.body.classList.toggle('nav-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'关闭导航菜单':'打开导航菜单')});nav.addEventListener('click',event=>{if(event.target.closest('a'))close()});document.addEventListener('click',event=>{if(!event.target.closest('#portfolio-nav'))close()});addEventListener('hashchange',close);addEventListener('resize',()=>{if(innerWidth>1040)close()});addEventListener('keydown',event=>{if(event.key==='Escape'&&document.body.classList.contains('nav-open')){close();toggle.focus()}})})();
