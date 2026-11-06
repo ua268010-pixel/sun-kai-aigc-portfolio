@@ -496,7 +496,7 @@
       <header class="visual-heading"><p>SELECTED VIDEO WORKS</p><h1>AI VIDEO DESIGN</h1><p class="visual-subtitle">AI 视频设计</p></header>
       <div class="video-grid video-grid--featured">
         <article class="video-category" data-category="drama" data-detail-path="/videos/drama">
-          <a class="video-category__media" href="#videos/drama" aria-label="进入漫剧设计详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/drama/night-shadow/poster.jpg" alt="" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <a class="video-category__media" href="#videos/drama" aria-label="进入漫剧设计详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/drama/lazy-sword-immortal/poster.jpg" alt="" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
           <div class="video-category__caption"><h2>漫剧设计</h2><p>AI DRAMA SERIES</p><span class="video-category__number">01</span></div>
         </article>
         <article class="video-category" data-category="short-film" data-detail-path="/videos/short-film">
@@ -885,6 +885,9 @@ const dramaWorks=[
     ]
   }
 ];
+const dramaDisplayOrder=['lazy-sword-immortal','a-love-that-came-late','night-shadow','three-days-enlightenment','the-last-card','spirit-beast-encounter','beast-spirit-the-mystic-curse'];
+const dramaRank=id=>{const rank=dramaDisplayOrder.indexOf(id);return rank<0?dramaDisplayOrder.length:rank};
+dramaWorks.sort((a,b)=>dramaRank(a.id)-dramaRank(b.id));
 const shortFilmWorks=[
   {
     id:'blood-paper-lantern',
