@@ -514,7 +514,7 @@
           <div class="video-category__caption"><h2>游戏设计</h2><p>GAME DESIGN</p><span class="video-category__number">04</span></div>
         </article>
         <article class="video-category" data-category="entertainment" data-detail-path="/videos/entertainment">
-          <a class="video-category__media" href="#videos/entertainment" aria-label="进入娱乐向详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/entertainment/outfit-change/poster.jpg" alt="" loading="lazy" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
+          <a class="video-category__media" href="#videos/entertainment" aria-label="进入娱乐向详情页"><div class="video-category__cover" aria-hidden="true"><img src="assets/entertainment/tribal-castle-defense/poster.jpg" alt="" loading="lazy" decoding="async"></div><span class="video-category__play" aria-hidden="true"></span></a>
           <div class="video-category__caption"><h2>娱乐向</h2><p>ENTERTAINMENT</p><span class="video-category__number">05</span></div>
         </article>
       </div>
@@ -703,31 +703,6 @@ const dramaWorks=[
     ]
   },
   {
-    id:'three-days-enlightenment',
-    title:'三日悟道',
-    description:'',
-    video:'assets/drama/three-days-enlightenment/video.mp4',
-    poster:'',
-    scriptFile:'assets/drama/three-days-enlightenment/script.txt',
-    characters:[
-      {src:'assets/drama/three-days-enlightenment/characters/character-01-front.webp',alt:'黑衣背剑男子正面全景'},
-      {src:'assets/drama/three-days-enlightenment/characters/character-01-views.webp',alt:'黑衣背剑男子三视图'},
-      {src:'assets/drama/three-days-enlightenment/characters/character-02-front.webp',alt:'男子紫袍换装正面全景'},
-      {src:'assets/drama/three-days-enlightenment/characters/character-02-views.webp',alt:'男子紫袍换装三视图'},
-      {src:'assets/drama/three-days-enlightenment/characters/character-03-front.webp',alt:'白衣师傅长老正面全景'},
-      {src:'assets/drama/three-days-enlightenment/characters/character-03-views.webp',alt:'白衣师傅长老三视图'}
-    ],
-    scenes:[
-      {src:'assets/drama/three-days-enlightenment/scenes/scene-01.webp',alt:'阴池水下修炼区四视角'},
-      {src:'assets/drama/three-days-enlightenment/scenes/scene-02.webp',alt:'阴池岸边与拱石桥四视角'},
-      {src:'assets/drama/three-days-enlightenment/scenes/scene-03.webp',alt:'幽果供食旧院四视角'}
-    ],
-    props:[
-      {src:'assets/drama/three-days-enlightenment/props/prop-01.webp',alt:'既有长剑裸刃形态补充多角度'},
-      {src:'assets/drama/three-days-enlightenment/props/prop-02.webp',alt:'蓝色幽果多角度'}
-    ]
-  },
-  {
     id:'lazy-sword-immortal',
     title:'我靠偷懒修成剑仙',
     description:'',
@@ -855,7 +830,7 @@ const dramaWorks=[
     ]
   }
 ];
-const dramaDisplayOrder=['lazy-sword-immortal','a-love-that-came-late','night-shadow','three-days-enlightenment','the-last-card','beast-spirit-the-mystic-curse'];
+const dramaDisplayOrder=['lazy-sword-immortal','a-love-that-came-late','night-shadow','the-last-card','beast-spirit-the-mystic-curse'];
 const dramaRank=id=>{const rank=dramaDisplayOrder.indexOf(id);return rank<0?dramaDisplayOrder.length:rank};
 dramaWorks.sort((a,b)=>dramaRank(a.id)-dramaRank(b.id));
 const shortFilmWorks=[
@@ -1138,6 +1113,22 @@ const gameWorks=[
   }
 ];
 const entertainmentWorks=[
+  {
+    id:'tribal-castle-defense',
+    title:'部落城堡与红旗防线',
+    videoSrc:'assets/entertainment/tribal-castle-defense/video.mp4',
+    poster:'assets/entertainment/tribal-castle-defense/poster.jpg',
+    characters:[
+      {src:'assets/entertainment/tribal-castle-defense/characters/barbarian-views.png',alt:'野蛮人战士四视图设定图'},
+      {src:'assets/entertainment/tribal-castle-defense/characters/barbarian-expressions.png',alt:'野蛮人四格表情集'},
+      {src:'assets/entertainment/tribal-castle-defense/characters/archer-views.png',alt:'弓箭手角色四视图设计'}
+    ],
+    scenes:[
+      {src:'assets/entertainment/tribal-castle-defense/scenes/scene-01.png',alt:'高空俯瞰的彩色城堡村庄'},
+      {src:'assets/entertainment/tribal-castle-defense/scenes/scene-02.png',alt:'部落城堡与红旗防线'}
+    ],
+    props:[]
+  },
   {
     id:'outfit-change',
     title:'三种穿搭',
