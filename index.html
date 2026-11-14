@@ -728,36 +728,6 @@ const dramaWorks=[
     ]
   },
   {
-    id:'spirit-beast-encounter',
-    title:'灵兽秘境：初次交锋',
-    description:'',
-    video:'assets/drama/spirit-beast-encounter/spirit-beast-encounter.mp4',
-    poster:'',
-    scriptFile:'assets/drama/spirit-beast-encounter/spirit-beast-encounter-script.txt',
-            characters:[
-              {src:'assets/drama/spirit-beast-encounter/characters/character-01.webp',alt:'陆沉正面全景'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-02.webp',alt:'陆沉三视图'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-03.webp',alt:'潜伏男子正面全景'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-04.webp',alt:'潜伏男子三视图'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-05.webp',alt:'雨晴正面全景'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-06.webp',alt:'雨晴三视图'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-07.webp',alt:'白色红尾兔形异兽正面全景'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-08.webp',alt:'白色红尾兔形异兽三视图'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-09.webp',alt:'蓝羽鸟形异兽正面全景'},
-              {src:'assets/drama/spirit-beast-encounter/characters/character-10.webp',alt:'蓝羽鸟形异兽三视图'}
-            ],
-    scenes:[
-      {src:'assets/drama/spirit-beast-encounter/scenes/scene-01.webp',alt:'迷雾森林小路'},
-      {src:'assets/drama/spirit-beast-encounter/scenes/scene-02.webp',alt:'森林树后伏击点'},
-      {src:'assets/drama/spirit-beast-encounter/scenes/scene-03.webp',alt:'一级危险区训练空地'}
-    ],
-    props:[
-      {src:'assets/drama/spirit-beast-encounter/props/prop-01.webp',alt:'陆沉长剑'},
-      {src:'assets/drama/spirit-beast-encounter/props/prop-02.webp',alt:'潜伏男子匕首'},
-      {src:'assets/drama/spirit-beast-encounter/props/prop-03.webp',alt:'雨晴长剑'}
-    ]
-  },
-  {
     id:'lazy-sword-immortal',
     title:'我靠偷懒修成剑仙',
     description:'',
@@ -885,7 +855,7 @@ const dramaWorks=[
     ]
   }
 ];
-const dramaDisplayOrder=['lazy-sword-immortal','a-love-that-came-late','night-shadow','three-days-enlightenment','the-last-card','spirit-beast-encounter','beast-spirit-the-mystic-curse'];
+const dramaDisplayOrder=['lazy-sword-immortal','a-love-that-came-late','night-shadow','three-days-enlightenment','the-last-card','beast-spirit-the-mystic-curse'];
 const dramaRank=id=>{const rank=dramaDisplayOrder.indexOf(id);return rank<0?dramaDisplayOrder.length:rank};
 dramaWorks.sort((a,b)=>dramaRank(a.id)-dramaRank(b.id));
 const shortFilmWorks=[
