@@ -763,6 +763,27 @@ const dramaWorks=[
     ]
   },
   {
+    id:'the-date',
+    title:'约会',
+    description:'',
+    video:'assets/drama/the-date/video.mp4',
+    poster:'',
+    characters:[
+      {src:'assets/drama/the-date/characters/character-01-front.webp',alt:'复古女主正面及侧面造型'},
+      {src:'assets/drama/the-date/characters/character-01-expressions.webp',alt:'复古女郎四幕情绪肖像'},
+      {src:'assets/drama/the-date/characters/character-02-front.webp',alt:'复古男主正面及侧面造型'},
+      {src:'assets/drama/the-date/characters/character-02-expressions.webp',alt:'复古男主四格情绪肖像'}
+    ],
+    scenes:[],
+    props:[
+      {src:'assets/drama/the-date/props/prop-01.webp',alt:'复古金色椭圆腕表多角度细节'},
+      {src:'assets/drama/the-date/props/prop-02.webp',alt:'复古香槟瓶多视角'},
+      {src:'assets/drama/the-date/props/prop-03.webp',alt:'复古棕色皮革手提包多角度'},
+      {src:'assets/drama/the-date/props/prop-04.webp',alt:'深红玫瑰多角度'},
+      {src:'assets/drama/the-date/props/prop-05.webp',alt:'香槟杯多角度'}
+    ]
+  },
+  {
     id:'beast-spirit-the-mystic-curse',
     title:'Beast Spirit The Mystic Curse',
     description:'',
@@ -831,7 +852,7 @@ const dramaWorks=[
     ]
   }
 ];
-const dramaDisplayOrder=['a-love-that-came-late','lazy-sword-immortal','night-shadow','the-last-card','beast-spirit-the-mystic-curse'];
+const dramaDisplayOrder=['a-love-that-came-late','the-date','lazy-sword-immortal','night-shadow','the-last-card','beast-spirit-the-mystic-curse'];
 const dramaRank=id=>{const rank=dramaDisplayOrder.indexOf(id);return rank<0?dramaDisplayOrder.length:rank};
 dramaWorks.sort((a,b)=>dramaRank(a.id)-dramaRank(b.id));
 const shortFilmWorks=[
